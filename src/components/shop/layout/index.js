@@ -1,5 +1,5 @@
 import React, { Fragment, createContext } from "react";
-import { Navber, Footer, CartModal } from "../partials";
+import { Navber, Footer,Footer1, CartModal } from "../partials";
 //import LoginSignup from "../auth/LoginSignup";
 export const LayoutContext = createContext();
 
@@ -12,7 +12,8 @@ const Layout = ({ children }) => {
         {/* All Children pass from here */}
         {children}
       </div>
-
+      
+      <div className="rounded-lg" ><Footer1 /></div>
       <div className="rounded-lg" ><Footer /></div>
     </Fragment>
   );

@@ -2,4 +2,6 @@ import Navber from "./Navber";
 import Footer from "./Footer";
 import CartModal from "./CartModal";
 
-export { Navber, Footer, CartModal };
+import Footer1 from "./Footer1";
+
+export { Navber, Footer, CartModal, Footer1 };

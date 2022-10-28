@@ -4,6 +4,8 @@ import { Fragment, createContext, useReducer } from "react";
 import Layout from "../layout";
 import Slider from './Slider'
 import SingleProduct from "./SingleProduct";
+
+import SpecialProduct from "./specialproducts";
 import comingsoon from'../../../assets/comingsoon.png'
 
 import CategoriesList from "./CategoryList";
@@ -20,6 +22,13 @@ const HomeComponent = () => {
         <CategoriesList />
       </section>
         <div></div>
+
+      <div className="newproducts">
+            out special products
+            <div className='border-b p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-2' >
+              <SpecialProduct/>
+            </div>
+      </div>
       <div className='flex flex-row' >
         <div className='banner basis-1/4'>
             <div>
@@ -27,6 +36,7 @@ const HomeComponent = () => {
             </div>
         </div>
       {/* Product Section */}
+      
       <div>
        <h1 className='ml-20 py-4 text-4xl text-black font-semibold' >Explore our Popular products</h1>
       <section className="basis-3/4 w-full space-x-4 md:px-12 lg:px-20 grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 mb-10  ">

@@ -9,29 +9,27 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 const Footer = (props) => {
   return (
     <Fragment>
-      <div className="bg-cyan-500" >
-      <footer class="text-center lg:text-left bg-cyan-800 text-gray-700">
-  <div class="flex justify-center items-center lg:justify-between p-6  border-t shadow-t shadow-md shadow-black border-gray-200">
+      <div className="bg-red-500" >
+      <footer class="text-center lg:text-left bg-gray-50 text-gray-800">
+  <div class="flex justify-center items-center lg:justify-between p-6  border-t">
     <div class="mr-12 hidden lg:block">
       <span>Get connected with us on social networks:</span>
     </div>
     <div class="flex justify-center">
-      <a href="#!" class="mr-6 text-gray-700">
+      <a href="#!" class="mr-6 text-blue-700">
         <FacebookIcon/>
       </a>
-      <a href="#!" class="mr-6 text-gray-700">
-        <TwitterIcon/>
-      </a>
-      <a href="#!" class="mr-6 text-gray-700">
-        
-      </a>
-      <a href="#!" class="mr-6 text-gray-700">
+      
+      <a href="#!" class="mr-6 text-red-500">
         <InstagramIcon/>
       </a>
-      <a href="#!" class="mr-6 text-gray-700">
+      <a href="#!" class="mr-6 text-cyan-500">
+        <TwitterIcon/>
+      </a>
+      <a href="#!" class="mr-6 text-red-500">
         <YouTubeIcon/>
       </a>
-      <a href="#!" class="text-gray-700">
+      <a href="#!" class="text-blue-500">
         <TelegramIcon/>
       </a>
     </div>
@@ -65,18 +63,18 @@ const Footer = (props) => {
         <h6 class="uppercase underline font-semibold md:mb-4 flex justify-center md:justify-start">
           Products
         </h6>
-        <ul class="text-gray-700" aria-labelledby="dropdownDefault">
+        <ul class="text-gray-700 text-left" aria-labelledby="dropdownDefault">
             <li class="">
-              <a href="#" class="block py-1 px-4 hover:bg-green-400 ">New Year</a>
+              <a href="#" class="block py-1 px-4 hover:text-red-400 ">New Year</a>
             </li>
             <li>
-             <a href="#" class="block py-1 px-4 hover:bg-green-400 ">Anversary</a>
+             <a href="#" class="block py-1 px-4 hover:text-red-400 ">Anversary</a>
             </li>
             <li>
-              <a href="#" class="block py-1 px-4 hover:bg-green-400 ">Wedding gift</a>
+              <a href="#" class="block py-1 px-4 hover:text-red-400 ">Wedding gift</a>
             </li>
             <li>
-              <a href="#" class="block py-1 px-4 hover:bg-green-400 ">Birthday cake</a>
+              <a href="#" class="block py-1 px-4 hover:text-red-400 ">Birthday cake</a>
             </li>
         </ul>
       </div>
@@ -85,25 +83,25 @@ const Footer = (props) => {
         Information
         </h6>
         
-        <ul class=" text-gray-700" aria-labelledby="dropdownDefault">
+        <ul class=" text-gray-700 text-left" aria-labelledby="dropdownDefault">
             <li class="">
-              <a href="#" class="block py-1 px-4 hover:bg-green-400 ">Policy Information</a>
+              <a href="#" class="block py-1 px-4 hover:text-red-400 ">Policy Information</a>
             </li>
             <li>
-             <a href="#" class="block py-1 px-4 hover:bg-green-400 ">Terms and Conditions</a>
+             <a href="#" class="block py-1 px-4 hover:text-red-400 ">Terms and Conditions</a>
             </li>
             <li>
-              <a href="#" class="block py-1 px-4 hover:bg-green-400 ">Return and Shipping Policy</a>
+              <a href="#" class="block py-1 px-4 hover:text-red-400 ">Return and Shipping Policy</a>
             </li>
             <li>
-              <a href="#" class="block py-1 px-4 hover:bg-green-400 ">Cancellation and Refund Policy</a>
+              <a href="#" class="block py-1 px-4 hover:text-red-400 ">Cancellation and Refund Policy</a>
             </li>
         </ul>
         
       </div>
       
       <div class="">
-        <h6 class="py-1 uppercase underline font-semibold md:mb-4 flex justify-center md:justify-start">
+        <h6 class="text-left py-1 uppercase underline font-semibold md:mb-4 flex justify-center md:justify-start">
           Contact
         </h6>
         <p class="flex items-center justify-center md:justify-start mb-4">
@@ -149,7 +147,7 @@ const Footer = (props) => {
       
     </div>
   </div>
-  <div class="text-center p-6 bg-green-500">
+  <div class="text-center p-6 bg-red-400">
     <span>© 2022 Copyright:</span>
     <a class="text-white font-semibold">Powerd by RaeyeTech</a>
   </div>
