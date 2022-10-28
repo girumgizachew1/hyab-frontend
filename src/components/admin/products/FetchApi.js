@@ -10,6 +10,33 @@ export const getAllProduct = async () => {
   }
 };
 
+export const getNewProduct = async () => {
+  try {
+    let res = await axios.get(`${apiURL}/api/product/new-product`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getOfferProduct = async () => {
+  try {
+    let res = await axios.get(`${apiURL}/api/product/offer-product`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getPopularProduct = async () => {
+  try {
+    let res = await axios.get(`${apiURL}/api/order/popular-product`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getActiveProduct = async () => {
   try {
     let res = await axios.get(`${apiURL}/api/product/active-product`);
