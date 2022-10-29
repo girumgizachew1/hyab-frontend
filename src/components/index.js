@@ -11,14 +11,14 @@ import {
   Customers,
 } from "./admin";
 import {
-WishList,
-ProtectedRoute,
-CartProtectedRoute,
-PageNotFound,
-ProductByCategory,
-CheckoutPage,
-VerifyEmail,
-PasswordReset
+  WishList,
+  ProtectedRoute,
+  CartProtectedRoute,
+  PageNotFound,
+  ProductByCategory,
+  CheckoutPage,
+  VerifyEmail,
+  PasswordReset,
 } from "./shop";
 
 /* Routing All page will be here */
@@ -29,23 +29,26 @@ const Routes = (props) => {
         {/* Shop & Public Routes */}
         <Route exact path="/" component={Home} />
 
-        {/* <Route exact path="/wish-list" component={WishList} /> */}
+        <Route exact path="/wish-list" component={WishList} />
         <Route exact path="/products/:id" component={ProductDetails} />
-        {/* <Route
+        <Route
           exact
           path="/products/category/:catId"
           component={ProductByCategory}
-        /> */}
+        />
 
-        {/* <Route exact path="/api/:id/verify/:token"
-         component={VerifyEmail} />
-        <Route exact path="/password-reset/:id/:token" component={PasswordReset} /> */}
+        <Route exact path="/api/:id/verify/:token" component={VerifyEmail} />
+        <Route
+          exact
+          path="/password-reset/:id/:token"
+          component={PasswordReset}
+        />
 
-        {/* <CartProtectedRoute
+        <CartProtectedRoute
           exact={true}
           path="/checkout"
           component={CheckoutPage}
-        /> */}
+        />
 
         {/* Shop & Public Routes End */}
 
@@ -78,14 +81,14 @@ const Routes = (props) => {
         {/* Admin Routes End */}
 
         {/* User Dashboard */}
-        
-         < ProtectedRoute
+
+        <ProtectedRoute
           exact={true}
           path="/user/profile"
           component={UserProfile}
         />
-        
-        < ProtectedRoute
+
+        <ProtectedRoute
           exact={true}
           path="/user/orders"
           component={UserOrders}
@@ -94,13 +97,12 @@ const Routes = (props) => {
           exact={true}
           path="/user/setting"
           component={SettingUser}
-        /> 
+        />
 
         {/* User Dashboard End */}
 
         {/* 404 Page */}
-        <Route component={PageNotFound} /> 
-      
+        <Route component={PageNotFound} />
       </Switch>
     </Router>
   );
