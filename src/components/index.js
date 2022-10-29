@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { home, ProductDetails, AdminProtectedRoute } from "./shop/";
+import { UserProfile, UserOrders, SettingUser } from "./shop/dashboardUser";
+import { Home, ProductDetails, AdminProtectedRoute } from "./shop/";
 import {
   DashboardAdmin,
   Categories,
@@ -9,6 +10,16 @@ import {
   Orders,
   Customers,
 } from "./admin";
+import {
+WishList,
+ProtectedRoute,
+CartProtectedRoute,
+PageNotFound,
+ProductByCategory,
+CheckoutPage,
+VerifyEmail,
+PasswordReset
+} from "./shop";
 
 /* Routing All page will be here */
 const Routes = (props) => {
@@ -16,7 +27,7 @@ const Routes = (props) => {
     <Router>
       <Switch>
         {/* Shop & Public Routes */}
-        <Route exact path="/" component={home} />
+        <Route exact path="/" component={Home} />
 
         {/* <Route exact path="/wish-list" component={WishList} /> */}
         <Route exact path="/products/:id" component={ProductDetails} />
@@ -67,12 +78,14 @@ const Routes = (props) => {
         {/* Admin Routes End */}
 
         {/* User Dashboard */}
-        {/* <ProtectedRoute
+        
+         < ProtectedRoute
           exact={true}
           path="/user/profile"
           component={UserProfile}
         />
-        <ProtectedRoute
+        
+        < ProtectedRoute
           exact={true}
           path="/user/orders"
           component={UserOrders}
@@ -81,11 +94,13 @@ const Routes = (props) => {
           exact={true}
           path="/user/setting"
           component={SettingUser}
-        /> */}
+        /> 
+
         {/* User Dashboard End */}
 
         {/* 404 Page */}
-        {/* <Route component={PageNotFound} /> */}
+        <Route component={PageNotFound} /> 
+      
       </Switch>
     </Router>
   );
