@@ -129,7 +129,7 @@ const ProductDetailsSection = (props) => {
             })}
           </div>
           <div className="col-span-2 md:col-span-5">
-            <div className="relative scale-125">
+            <div className="relative scale-70">
               <img
                 className="w-full object-cover"
                 src={sProduct.pImageUrl[count]}

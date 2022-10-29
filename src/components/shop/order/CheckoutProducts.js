@@ -29,17 +29,85 @@ export const CheckoutComponent = (props) => {
     clientToken: null,
     instance: {},
   });
-  const country_list = ["Algeria","Angola","Argentina","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Belarus","Belgium","Botswana","Brazil","China","Congo","Denmark","Djibouti","Egypt","Ethiopia","France","Georgia","Germany","India","Israel","Italy","Japan","Jordan","Kenya","Kuwait","Mexico","Monaco","Morocco","Netherlands","Niger","Nigeria","Norway","Portugal","Qatar","Romania","Russia","Rwanda","Saudi Arabia","Senegal","South Africa","South Korea","Spain","Sudan","Sweden","Switzerland","Syria","Taiwan","Thailand","Togo","Tunisia","Turkey","Uganda","United Arab Emirates","United Kingdom","Yemen","Zambia","Zimbabwe"];
-
-  const cData = [
-    { text: 'Atlanta', group: 'US', value: 'atl' },
-    { text: 'Boston', group: 'US', value: 'bos' },
-    { text: 'Bath', group: 'UK', value: 'bat' },
-    { text: 'Bristol', group: 'UK', value: 'bri' },
+  const country_list = [
+    "Algeria",
+    "Angola",
+    "Argentina",
+    "Australia",
+    "Austria",
+    "Azerbaijan",
+    "Bahamas",
+    "Bahrain",
+    "Belarus",
+    "Belgium",
+    "Botswana",
+    "Brazil",
+    "China",
+    "Congo",
+    "Denmark",
+    "Djibouti",
+    "Egypt",
+    "Ethiopia",
+    "France",
+    "Georgia",
+    "Germany",
+    "India",
+    "Israel",
+    "Italy",
+    "Japan",
+    "Jordan",
+    "Kenya",
+    "Kuwait",
+    "Mexico",
+    "Monaco",
+    "Morocco",
+    "Netherlands",
+    "Niger",
+    "Nigeria",
+    "Norway",
+    "Portugal",
+    "Qatar",
+    "Romania",
+    "Russia",
+    "Rwanda",
+    "Saudi Arabia",
+    "Senegal",
+    "South Africa",
+    "South Korea",
+    "Spain",
+    "Sudan",
+    "Sweden",
+    "Switzerland",
+    "Syria",
+    "Taiwan",
+    "Thailand",
+    "Togo",
+    "Tunisia",
+    "Turkey",
+    "Uganda",
+    "United Arab Emirates",
+    "United Kingdom",
+    "Yemen",
+    "Zambia",
+    "Zimbabwe",
   ];
 
-  const occastion_list = ["Birthday","New Years",
-    "Graduation","New Born Baby", "Baby Shower", "Aniversity", "Other"];
+  const cData = [
+    { text: "Atlanta", group: "US", value: "atl" },
+    { text: "Boston", group: "US", value: "bos" },
+    { text: "Bath", group: "UK", value: "bat" },
+    { text: "Bristol", group: "UK", value: "bri" },
+  ];
+
+  const occastion_list = [
+    "Birthday",
+    "New Years",
+    "Graduation",
+    "New Born Baby",
+    "Baby Shower",
+    "Aniversity",
+    "Other",
+  ];
 
   useEffect(() => {
     fetchData(cartListProduct, dispatch);
@@ -93,7 +161,7 @@ export const CheckoutComponent = (props) => {
                   ) : (
                     ""
                   )}
-                  
+
                   <div className="flex flex-col py-2">
                     <label htmlFor="name" className="pb-2">
                       Reciver Full Name
@@ -120,16 +188,16 @@ export const CheckoutComponent = (props) => {
                     </label>
                     <Select
                       value={state.country}
-                      onChange={(e) => setState({
-                        ...state,
-                        country: e.target.value,
-                        error: false,
-                      })}
-                      >
+                      onChange={(e) =>
+                        setState({
+                          ...state,
+                          country: e.target.value,
+                          error: false,
+                        })
+                      }
+                    >
                       {country_list?.map((country) => {
-                        return (
-                          <MenuItem value={country}>{country}</MenuItem>
-                        )
+                        return <MenuItem value={country}>{country}</MenuItem>;
                       })}
                     </Select>
                     {/* <input
@@ -147,8 +215,7 @@ export const CheckoutComponent = (props) => {
                       placeholder="Address..."
                     /> */}
                   </div>
-                  
-                  
+
                   <div className="flex flex-col py-2">
                     <label htmlFor="city" className="pb-2">
                       City / Town
@@ -168,7 +235,7 @@ export const CheckoutComponent = (props) => {
                       placeholder="City..."
                     />
                   </div>
-                  
+
                   <div className="flex flex-col py-2">
                     <label htmlFor="address" className="pb-2">
                       Street Address
@@ -188,7 +255,7 @@ export const CheckoutComponent = (props) => {
                       placeholder="Address..."
                     />
                   </div>
-                  
+
                   <div className="flex flex-col py-2">
                     <label htmlFor="code" className="pb-2">
                       Post code
@@ -229,26 +296,25 @@ export const CheckoutComponent = (props) => {
                     />
                   </div>
 
-                  
                   <div className="flex flex-col py-2">
                     <label htmlFor="occasion" className="pb-2">
                       Occasion
                     </label>
                     <Select
                       value={state.occasion}
-                      onChange={(e) => setState({
-                        ...state,
-                        occasion: e.target.value,
-                        error: false,
-                      })}
-                    >
-                      {
-                        occastion_list?.map((occastion) => {
-                          return(
-                            <MenuItem value={occastion}>{occastion}</MenuItem>
-                          )
+                      onChange={(e) =>
+                        setState({
+                          ...state,
+                          occasion: e.target.value,
+                          error: false,
                         })
                       }
+                    >
+                      {occastion_list?.map((occastion) => {
+                        return (
+                          <MenuItem value={occastion}>{occastion}</MenuItem>
+                        );
+                      })}
                     </Select>
                   </div>
 

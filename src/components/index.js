@@ -11,14 +11,14 @@ import {
   Customers,
 } from "./admin";
 import {
-WishList,
-ProtectedRoute,
-CartProtectedRoute,
-PageNotFound,
-ProductByCategory,
-CheckoutPage,
-VerifyEmail,
-PasswordReset
+  WishList,
+  ProtectedRoute,
+  CartProtectedRoute,
+  PageNotFound,
+  ProductByCategory,
+  CheckoutPage,
+  VerifyEmail,
+  PasswordReset,
 } from "./shop";
 
 /* Routing All page will be here */
@@ -78,14 +78,14 @@ const Routes = (props) => {
         {/* Admin Routes End */}
 
         {/* User Dashboard */}
-        
-         < ProtectedRoute
+
+        <ProtectedRoute
           exact={true}
           path="/user/profile"
           component={UserProfile}
         />
-        
-        < ProtectedRoute
+
+        <ProtectedRoute
           exact={true}
           path="/user/orders"
           component={UserOrders}
@@ -94,13 +94,12 @@ const Routes = (props) => {
           exact={true}
           path="/user/setting"
           component={SettingUser}
-        /> 
+        />
 
         {/* User Dashboard End */}
 
         {/* 404 Page */}
-        <Route component={PageNotFound} /> 
-      
+        <Route component={PageNotFound} />
       </Switch>
     </Router>
   );

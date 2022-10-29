@@ -147,7 +147,7 @@ const Footer = (props) => {
       
     </div>
   </div>
-  <div class="text-center p-6 bg-red-400">
+  <div class="text-center p-6 bg-red-500">
     <span>© 2022 Copyright:</span>
     <a class="text-white font-semibold">Powerd by RaeyeTech</a>
   </div>
