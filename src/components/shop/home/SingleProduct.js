@@ -1,9 +1,8 @@
 import React, { Fragment, useState, useEffect, useContext } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect ,useHistory } from "react-router-dom";
 import { getAllProduct, getActiveProduct } from "../../admin/products/FetchApi";
 import { HomeContext } from "./index";
 import { isWishReq, unWishReq, isWish } from "./Mixins";
-import { useHistory } from "react-router-dom";
 
 const apiURL = process.env.REACT_APP_API_URL;
 
@@ -106,7 +105,7 @@ const SingleProduct = (props) => {
                     <div className="flex flex-row justify-between p-2 border-b">
                       <div>${item.pPrice}.00</div>
                       <button
-                        onClick={(e) => Redirect(`/products/${item._id}`)}
+                        onClick={(e) => history.push(`/products/${item._id}`)}
                         className="bg-red-400 border-gray-500 text-white text-sm rounded-lg w-14 h-6 md:w-24 md:h-8"
                       >
                         View
