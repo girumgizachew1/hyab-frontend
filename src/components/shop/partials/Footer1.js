@@ -11,7 +11,7 @@ const Footer = (props) => {
     <Fragment>
       <div className="bg-red-500" >
       <footer class="text-center lg:text-left bg-gray-50 text-gray-800">
- 
+  
   <div class="text-center p-6 bg-red-400">
     <span>© 2022 Copyright:</span>
     <a class="text-white font-semibold">Powerd by RaeyeTech</a>

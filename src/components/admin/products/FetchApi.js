@@ -10,6 +10,33 @@ export const getAllProduct = async () => {
   }
 };
 
+export const getNewProduct = async () => {
+  try {
+    let res = await axios.get(`${apiURL}/api/product/new-product`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getOfferProduct = async () => {
+  try {
+    let res = await axios.get(`${apiURL}/api/product/offer-product`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getPopularProduct = async () => {
+  try {
+    let res = await axios.get(`${apiURL}/api/order/popular-product`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getActiveProduct = async () => {
   try {
     let res = await axios.get(`${apiURL}/api/product/active-product`);
@@ -80,11 +107,11 @@ export const editProduct = async (product, urls) => {
   console.log(product);
   /* Most important part for updating multiple image  */
   let formData = new FormData();
-  if (product.pEditImages) {
-    for (const file of product.pEditImages) {
-      formData.append("pEditImages", file);
-    }
-  }
+  // if (product.pEditImages) {
+  //   for (const file of product.pEditImages) {
+  //     formData.append("pEditImages", file);
+  //   }
+  // }
   console.log(urls);
   /* Most important part for updating multiple image  */
   formData.append("pId", product.pId);
@@ -96,9 +123,20 @@ export const editProduct = async (product, urls) => {
   formData.append("pPrice", product.pPrice);
   formData.append("pOffer", product.pOffer);
   formData.append("pImages", product.pImages);
-  console.log(product.pCategory._id);
+  formData.append("pImageUrl ", product.pImageUrl);
+  console.log(product.pCategory);
   try {
-    let res = await axios.post(`${apiURL}/api/product/edit-product`, formData);
+    let res = await axios.post(`${apiURL}/api/product/edit-product`, {
+      pId: product.pId,
+      pName: product.pName,
+      pDescription: product.pDescription,
+      pPrice: product.pPrice,
+      pQuantity: product.pQuantity,
+      pCategory: product.pCategory,
+      pImageUrl: product.pImageUrl,
+      pOffer: product.pOffer,
+      pStatus: product.pStatus,
+    });
     return res.data;
   } catch (error) {
     console.log(error);

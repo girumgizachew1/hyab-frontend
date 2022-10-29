@@ -35,7 +35,18 @@ export const homeReducer = (state, action) => {
         ...state,
         products: action.payload,
       };
-    case "searchHandleInReducer":
+      case "specialProducts":
+      return {
+        ...state,
+        specialproducts: action.payload,
+      };
+      case "newproducts":
+      return {
+        ...state,
+        newproducts: action.payload,
+      };
+
+      case "searchHandleInReducer":
       return {
         ...state,
         products:

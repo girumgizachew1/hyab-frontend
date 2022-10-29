@@ -68,7 +68,7 @@ const CategoriesList = (props) => {
                 onClick={(e) => Redirect(`/products/category/${item._id}`)}
                 className="rounded overflow-hidden shadow-md hover:shadow-xl flex flex-row bg-gray-50 justify-between p-2">
                 {/* <div className="mx-1 col-span-1 w-full  border m-2 rounded-lg border-green-200 text-black shadow-lg bg-white hover:bg-white hover:text-green-600 hover:hidden "> */}
-                <div className="px-6 py-4 text-center ">
+                <div className="px-2 py-4 text-center ">
                     <div className="font-bold text-LG mb-2">
                       {item.cName}
                     </div>
