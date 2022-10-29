@@ -30,22 +30,22 @@ const Routes = (props) => {
         <Route exact path="/" component={Home} />
 
         {/* <Route exact path="/wish-list" component={WishList} /> */}
+        
         <Route exact path="/products/:id" component={ProductDetails} />
-        {/* <Route
+         <Route
           exact
           path="/products/category/:catId"
           component={ProductByCategory}
-        /> */}
-
-        {/* <Route exact path="/api/:id/verify/:token"
+        />
+         <Route exact path="/api/:id/verify/:token"
          component={VerifyEmail} />
-        <Route exact path="/password-reset/:id/:token" component={PasswordReset} /> */}
+        <Route exact path="/password-reset/:id/:token" component={PasswordReset} /> 
 
-        {/* <CartProtectedRoute
+         <CartProtectedRoute
           exact={true}
           path="/checkout"
           component={CheckoutPage}
-        /> */}
+        /> 
 
         {/* Shop & Public Routes End */}
 
