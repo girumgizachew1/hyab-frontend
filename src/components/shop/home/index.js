@@ -38,8 +38,8 @@ const HomeComponent = () => {
           {/* Product Section */}
       
             <div>
-              <h1 className='ml-20 py-4 text-4xl text-gray-800 font-semibold' >Explore our Popular products</h1>
-              <section className="basis-3/4 w-full space-x-4 md:px-12 lg:px-20 grid grid-cols-1 gap-5 md:grid-cols-2  lg:grid-cols-3 mb-10  ">
+              <h1 className='ml-20 py-4 text-4xl text-gray-800 font-semibold mx-auto' >Explore our Popular products</h1>
+              <section className="basis-3/4 w-full space-x-4 md:px-12 lg:px-20 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 mb-10  ">
                 <SingleProduct />
               </section>
             </div>

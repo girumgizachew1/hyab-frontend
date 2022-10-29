@@ -12,7 +12,6 @@ const Layout = ({ children }) => {
         {/* All Children pass from here */}
         {children}
       </div>
-      
       <div className="rounded-lg" ><Footer1 /></div>
       <div className="rounded-lg" ><Footer /></div>
     </Fragment>
