@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect, useContext } from "react";
-import { Redirect ,useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { getAllProduct, getActiveProduct } from "../../admin/products/FetchApi";
 import { HomeContext } from "./index";
 import { isWishReq, unWishReq, isWish } from "./Mixins";
@@ -65,11 +65,11 @@ const SingleProduct = (props) => {
               <Fragment key={index}>
                 <div
                   className="w-72 h-full space-x-5"
-                  onClick={(e) => Redirect(`/products/${item._id}`)}
+                  onClick={(e) => history.push(`/products/${item._id}`)}
                 >
                   <div className="mx-1 col-span-1 w-full h-80 border m-2 rounded-lg border-gray-200 hover:border-red-400 text-black  shadow-lg bg-white">
                     <img
-                      onClick={(e) => Redirect(`/products/${item._id}`)}
+                      onClick={(e) => history.push(`/products/${item._id}`)}
                       className="h-44 w-full object-cover object-center shadow-sm shadow-green-100 opacity-90 mt-4"
                       src={item.pImageUrl}
                       alt=""
