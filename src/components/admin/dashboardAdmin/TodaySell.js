@@ -1,5 +1,5 @@
 import React, { Fragment, useContext, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import moment from "moment";
 import { DashboardContext } from "./";
 import { todayAllOrders } from "./Action";
@@ -7,7 +7,6 @@ import { todayAllOrders } from "./Action";
 const apiURL = process.env.REACT_APP_API_URL;
 
 const SellTable = () => {
-  const history = useHistory();
   const { data, dispatch } = useContext(DashboardContext);
 
   useEffect(() => {
@@ -68,7 +67,7 @@ const SellTable = () => {
         </div>
         <div className="flex justify-center">
           <span
-            onClick={(e) => history.push("/admin/dashboard/orders")}
+            onClick={(e) => Redirect("/admin/dashboard/orders")}
             style={{ background: "#303031" }}
             className="cursor-pointer px-4 py-2 text-white rounded-full"
           >

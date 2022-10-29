@@ -1,17 +1,14 @@
 import React, { Fragment, useState, useEffect, useContext } from "react";
 import { Redirect } from "react-router-dom";
-import { getAllProduct, getActiveProduct } from "../../admin/products/FetchApi";
-import { getActiveCategory } from "../../admin/categories/FetchApi"
+import { getOfferProduct} from "../../admin/products/FetchApi";
 import { HomeContext } from "./index";
 import { isWishReq, unWishReq, isWish } from "./Mixins";
 
-
 const apiURL = process.env.REACT_APP_API_URL;
-const CategoriesList = (props) => {
-  const { data, dispatch } = useContext(HomeContext);
-  const { products } = data;
-  const [categories, setCategories] = useState(null);
 
+const SpecialProduct = (props) => {
+  const { data, dispatch } = useContext(HomeContext);
+  const { specialproducts } = data;
   /* WhisList State */
   const [wList, setWlist] = useState(
     JSON.parse(localStorage.getItem("wishList"))
@@ -25,10 +22,11 @@ const CategoriesList = (props) => {
   const fetchData = async () => {
     dispatch({ type: "loading", payload: true });
     try {
-      let responseData = await getActiveCategory();
+      let responseData = await getOfferProduct();
       setTimeout(() => {
-        if (responseData && responseData.Categories) {
-          setCategories(responseData.Categories);
+        if (responseData && responseData.Products) {
+          console.log(responseData.Products);
+          dispatch({ type: "specialProducts", payload: responseData.Products });
           dispatch({ type: "loading", payload: false });
         }
       }, 500);
@@ -57,39 +55,38 @@ const CategoriesList = (props) => {
       </div>
     );
   }
-  
   return (
     <Fragment>
-      {categories && categories.length > 0 ? (
-        categories?.map((item, index) => {
+      
+      {specialproducts && specialproducts.length > 0 ? (
+        
+        specialproducts.map((item, index) => {
           return (
+            <div className="" >
             <Fragment key={index}>
-              <div 
-                onClick={(e) => Redirect(`/products/category/${item._id}`)}
-                className="rounded overflow-hidden shadow-md hover:shadow-xl flex flex-row bg-gray-50 justify-between p-2">
-                {/* <div className="mx-1 col-span-1 w-full  border m-2 rounded-lg border-green-200 text-black shadow-lg bg-white hover:bg-white hover:text-green-600 hover:hidden "> */}
-                <div className="px-2 py-4 text-center ">
-                    <div className="font-bold text-LG mb-2">
-                      {item.cName}
-                    </div>
-                  </div> 
-                  <img 
-                    className="h-16 w-16 object-fit shadow-sm shadow-green-100 "
-                    src={item.cImageUrl}
-                    alt=""
-                  />
-                {/* </div> */}
+              <div className="w-full h-full space-x-5">
+
+		
+              <div className="col-span-1 w-full h-40 border m-2 rounded-lg border-green-200 text-black  shadow-lg bg-white">
+                <img
+                  onClick={(e) => Redirect(`/products/${item._id}`)}
+                  className="h-40 w-full object-cover object-center shadow-sm shadow-green-100 opacity-90 "
+                  src={item.pImageUrl}
+                  alt=""
+                />               
+              </div>
               </div>
             </Fragment>
+            </div>
           );
         })
       ) : (
         <div className="col-span-2 md:col-span-3 lg:col-span-4 flex items-center justify-center py-24 text-2xl">
-          No Categories found
+          No product found
         </div>
       )}
     </Fragment>
   );
 };
 
-export default CategoriesList;
+export default SpecialProduct;

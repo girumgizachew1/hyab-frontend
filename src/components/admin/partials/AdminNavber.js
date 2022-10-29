@@ -1,8 +1,7 @@
 import React, { Fragment } from "react";
-import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 const AdminNavber = (props) => {
-  const history = useHistory();
 
   const logout = () => {
     localStorage.removeItem("jwt");
@@ -37,7 +36,7 @@ const AdminNavber = (props) => {
 
         <div className="hidden lg:block">
           <span
-            onClick={(e) => history.push("/admin/dashboard")}
+            onClick={(e) => Redirect("/admin/dashboard")}
             style={{ letterSpacing: "0.70rem" }}
             className="flex items-left text-center font-bold uppercase text-gray-800 text-2xl cursor-pointer px-2 text-center"
           >
@@ -63,7 +62,7 @@ const AdminNavber = (props) => {
             />
           </svg>
           <span
-            onClick={(e) => history.push("/admin/dashboard")}
+            onClick={(e) => Redirect("/admin/dashboard")}
             style={{ letterSpacing: "0.10rem" }}
             className="flex items-left text-center font-bold uppercase text-gray-800 text-2xl cursor-pointer px-2 text-center"
           >
@@ -127,7 +126,7 @@ const AdminNavber = (props) => {
             <div className="userDropdown absolute right-0 mt-1 bg-gray-200 rounded">
               <li className="flex flex-col text-gray-700">
                 <span
-                  onClick={(e) => history.push("/")}
+                  onClick={(e) => Redirect("/")}
                   className="flex space-x-1 py-2 px-8 hover:bg-gray-400 cursor-pointer"
                 >
                   <span>

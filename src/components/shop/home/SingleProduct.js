@@ -65,10 +65,10 @@ const SingleProduct = (props) => {
             <div className="">
               <Fragment key={index}>
                 <div
-                  className="w-full h-full space-x-5"
-                  onClick={(e) => history.push(`/products/${item._id}`)}
+                  className="w-80 h-full space-x-5"
+                  onClick={(e) => Redirect(`/products/${item._id}`)}
                 >
-                  <div className="mx-1 col-span-1 w-full h-80 border m-2 rounded-lg border-green-200 text-black  shadow-lg bg-white">
+                  <div className="mx-1 col-span-1 w-full h-80 border m-2 rounded-lg border-gray-200 hover:border-red-400 text-black  shadow-lg bg-white">
                     <img
                       onClick={(e) => Redirect(`/products/${item._id}`)}
                       className="h-44 w-full object-cover object-center shadow-sm shadow-green-100 opacity-90 mt-4"
