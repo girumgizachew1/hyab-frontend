@@ -28,11 +28,11 @@ const Navber = (props) => {
     data.cartModal
       ? dispatch({ type: "cartModalToggle", payload: false })
       : dispatch({ type: "cartModalToggle", payload: true });
-  const [top, setTop] = useState(false);
+  const [top, setTop] = useState(true);
 
   useEffect(() => {
     const scrollHandler = () => {
-      window.pageYOffset > 200 ? setTop(false) : setTop(false)
+      window.pageYOffset > 200 ? setTop(false) : setTop(true)
     };
     window.addEventListener('scroll', scrollHandler);
     return () => window.removeEventListener('scroll', scrollHandler);
@@ -40,14 +40,14 @@ const Navber = (props) => {
 
   return (
     <Fragment>
-       <div className={`fixed w-full h-16 z-30  transition duration-300 display ease-in-out  ${!top ? ' bg-white backdrop-blur-sm shadow-lg':'opacity-50' }`}>
+       <div className={`fixed w-full h-16 z-30  transition duration-300 display ease-in-out  ${!top ? ' bg-red-500 backdrop-blur-sm shadow-lg':'bg-red-500 bg-opacity-75' }`}>
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-3">
-        <div className="bg-white  py-3 px-3 col-span-2 lg:hidden flex flex-row-reverse justify-between z-10">
+        <div className="bg-white px-3 col-span-2 lg:hidden flex flex-row-reverse justify-between z-10">
             <div className="flex flex-row-reverse space-x-4"> 
               <svg
                 onClick={(e) => navberToggleOpen()}
-                className="col-span-1 lg:hidden w-8 h-8 cursor-pointer text-green-600"
+                className="col-span-1 lg:hidden w-8 h-8 cursor-pointer text-red-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -63,7 +63,7 @@ const Navber = (props) => {
               {/* Cart Modal Button */}
               <div
                 onClick={(e) => cartModalOpen()}
-                className="col-span-1 lg:hidden w-8 h-8 cursor-pointer text-green-600"
+                className="col-span-1 lg:hidden w-8 h-8 cursor-pointer text-red-600"
                 title="Cart"
               >
                 <AddShoppingCartIcon>
@@ -77,8 +77,8 @@ const Navber = (props) => {
 
             <div  onClick={(e) => history.push("/")}
             style={{ letterSpacing: "0.10rem" }} 
-            className="flex items-left text-center font-bold uppercase text-gray-800 text-2xl cursor-pointer px-2" >
-              <span className="text-gray-800">
+            className="flex items-left text-left font-bold uppercase text-gray-800 text-2xl cursor-pointer px-2" >
+              <span className="text-white">
                 Hyab
               </span>
               <span className="text-green-600"
@@ -91,26 +91,32 @@ const Navber = (props) => {
           <div
             onClick={(e) => history.push("/")}
             style={{ letterSpacing: "0.70rem" }}
-            className="hidden lg:block lg:flex lg:flex-col lg:justify-center items-center col-span-1 text-center text-black font-semibold tracking-widest uppercase text-xl cursor-pointer"
+            className="hidden lg:flex lg:flex-row py-3 col-span-1 items-left text-left font-bold uppercase text-gray-800 text-2xl cursor-pointer px-2"
           >
-            <p>Hyab Market</p>
+            <span className="text-white">
+                Hyab
+              </span>
+              <span className="text-green-600"
+              >
+                Market
+              </span>
           </div>
 
-          <div className="hidden lg:flex lg:flex-row lg:space-x-3 lg:justify-center col-span-1  text-black py-3 ">
+          <div className="hidden lg:flex lg:flex-row lg:space-x-3 lg:justify-center col-span-1  text-white py-4 w-full ">
             <span
-              className="hover:bg-gray-100 px-4 py-3 rounded-lg font-light tracking-widest  cursor-pointer"
+              className="hover:text-gray-100 px-1 rounded-lg font-light tracking-widest  cursor-pointer"
               onClick={(e) => history.push("/")}
             >
              Gift Shop
             </span>
             <span
-              className="hover:bg-gray-100 px-4 py-3 rounded-lg font-light tracking-widest cursor-pointer"
+              className="hover:text-gray-100 px-1 rounded-lg font-light tracking-widest cursor-pointer"
               onClick={(e) => history.push("/blog")}
             >
               How to order
             </span>
             <span
-              className="hover:bg-gray-100 px-4 py-3 rounded-lg font-light tracking-widest cursor-pointer"
+              className="hover:text-gray-100 px-1 rounded-lg font-light tracking-widest cursor-pointer"
               onClick={(e) => history.push("/contact-us")}
             >
               Contact us
@@ -122,20 +128,20 @@ const Navber = (props) => {
               {/*  WishList Page Button */}
               <div
                 onClick={(e) => history.push("/wish-list")}
-                className="hover:bg-gray-100 rounded-lg px-2 py-2 cursor-pointer hidden lg:flex"
+                className="hover:text-gray-100 rounded-lg px-2 py-2 cursor-pointer hidden lg:flex"
                 title="Wishlist"
               >
                 <FavoriteBorderIcon className={`${
                     location.pathname === "/wish-list"
                       ? "fill-current text-black"
                       : ""
-                  } w-8 h-8 text-black cursor-pointer`} />  
+                  } w-8 h-8 text-white cursor-pointer`} />  
                   
               </div>
               {/* Cart Modal Button */}
               <div
                 onClick={(e) => cartModalOpen()}
-                className="text-black hover:bg-gray-100 px-2 py-2 rounded-lg relative cursor-pointer hidden lg:flex"
+                className="text-white hover:text-gray-100 px-2 py-2 rounded-lg relative cursor-pointer hidden lg:flex"
                 title="Cart"
               >
               <AddShoppingCartIcon>
@@ -319,6 +325,7 @@ const Navber = (props) => {
                       )}
                     </div>
                   </div>
+
                 </Fragment>
               ) : (
                 /* Login Modal Button */
@@ -400,10 +407,10 @@ const Navber = (props) => {
                       </Fragment>):
                       <div
                         onClick={(e) => loginModalOpen()}
-                        className="cursor-pointer hover:bg-green-400  rounded-lg"
+                        className="cursor-pointer text-white hover:text-gray-100  rounded-lg"
                         title="Login"
                        >
-                      <span className="font-medium tracking-widest text-base hover:bg-green-400 focus:bg-green-400  px-3 py-2 rounded-lg cursor-pointer " >login</span>
+                      <span className="font-medium tracking-widest text-base hover:text-gray-100  px-3 py-2 rounded-lg cursor-pointer " >login</span>
                       </div>
 }
           </div>

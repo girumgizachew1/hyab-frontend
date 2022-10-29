@@ -64,7 +64,7 @@ const SingleProduct = (props) => {
             <div className="">
               <Fragment key={index}>
                 <div
-                  className="w-80 h-full space-x-5"
+                  className="w-72 h-full space-x-5"
                   onClick={(e) => Redirect(`/products/${item._id}`)}
                 >
                   <div className="mx-1 col-span-1 w-full h-80 border m-2 rounded-lg border-gray-200 hover:border-red-400 text-black  shadow-lg bg-white">
