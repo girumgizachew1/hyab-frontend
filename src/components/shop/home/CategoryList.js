@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect, useContext } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { getAllProduct, getActiveProduct } from "../../admin/products/FetchApi";
 import { getActiveCategory } from "../../admin/categories/FetchApi"
 import { HomeContext } from "./index";
@@ -11,7 +11,7 @@ const CategoriesList = (props) => {
   const { data, dispatch } = useContext(HomeContext);
   const { products } = data;
   const [categories, setCategories] = useState(null);
-
+  const history = useHistory() 
   /* WhisList State */
   const [wList, setWlist] = useState(
     JSON.parse(localStorage.getItem("wishList"))
@@ -65,7 +65,7 @@ const CategoriesList = (props) => {
           return (
             <Fragment key={index}>
               <div 
-                onClick={(e) => Redirect(`/products/category/${item._id}`)}
+                onClick={(e) => history.push(`/products/category/${item._id}`)}
                 className="rounded overflow-hidden shadow-md hover:shadow-xl flex flex-row bg-gray-50 justify-between p-2">
                 {/* <div className="mx-1 col-span-1 w-full  border m-2 rounded-lg border-green-200 text-black shadow-lg bg-white hover:bg-white hover:text-green-600 hover:hidden "> */}
                 <div className="px-2 py-4 text-center ">
