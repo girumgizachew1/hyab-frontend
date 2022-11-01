@@ -25,7 +25,7 @@ const HomeComponent = () => {
 
         <div className="newproducts">
          <h2 className='text-red-500 text-lg p-2' >Our special Offers</h2>   
-            <div className='border-b p-2 px-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-2' >
+            <div className='border-b p-2 px-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 gap-2' >
               <SpecialProduct/>
             </div>
         </div>
@@ -46,10 +46,6 @@ const HomeComponent = () => {
       </div>
       
       <div  >
-        <h1>New products</h1>
-          <section className='w-full border-b p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-2'>
-            <NewProduct/>
-          </section>
       </div>
     </Fragment>
   );

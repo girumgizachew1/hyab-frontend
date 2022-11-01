@@ -142,7 +142,7 @@ export const CheckoutComponent = (props) => {
       <section className="mx-4 mt-20 md:mx-12 md:mt-32 lg:mt-24">
         {/* Product List */}
         <div className="text-2xl mx-2">Order</div>
-        <div className="flex flex-col md:flex md:space-x-2 md:flex-row">
+        <div className="flex flex-col md:flex md:space-x-2 md:flex-row-reverse">
           <div className="md:w-1/2">
             <CheckoutProducts products={data.cartProduct} />
           </div>
