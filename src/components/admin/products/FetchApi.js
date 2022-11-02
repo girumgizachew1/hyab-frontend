@@ -133,7 +133,7 @@ export const editProduct = async (product, urls) => {
       pPrice: product.pPrice,
       pQuantity: product.pQuantity,
       pCategory: product.pCategory,
-      pImageUrl: product.pImageUrl,
+      pImageUrl: urls,
       pOffer: product.pOffer,
       pStatus: product.pStatus,
     });
