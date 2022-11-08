@@ -345,7 +345,6 @@ const Navber = (props) => {
                           <span></span>
                           <span>My Orders</span>
                         </span>
-
                         <span
                           onClick={(e) => history.push("/wish-list")}
                           className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer"
@@ -425,79 +424,89 @@ const Navber = (props) => {
                               Sign out
                             </a>
                           </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  /* Login Modal Button */
-                  <div
-                    onClick={(e) => loginModalOpen()}
-                    className="cursor-pointer hover:bg-green-400 px-2 py-2 rounded-lg hidden lg:flex "
-                    title="Login"
-                  >
-                    <LoginIcon className="text-black" />
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-
-          <div
-            className={
-              data.navberHamburger && data.navberHamburger
-                ? "flex lg:hidden transition-all ease-out duration-500 md:transition-none md:w-auto md:flex-grow md:flex md:items-center mt-2"
-                : "flex lg:hidden  transition-all ease-out duration-500 md:transition-none md:w-auto md:flex-grow md:flex md:items-center -mt-64"
-            }
-          >
-            <div className="w-full  col-span-1 flex flex-col text-sm text-gray-800 bg-white shadow-sm shadow-green-100 rounded-b-sm opacity-85 space-y-3">
-              <span
-                className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer text-gray-800 text-sm"
-                onClick={(e) => history.push("/blog")}
-              >
-                How to Order
-              </span>
-              <span
-                className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer text-gray-800 text-sm"
-                onClick={(e) => history.push("/contact-us")}
-              >
-                Contact us
-              </span>
-              {localStorage.getItem("jwt") ? (
-                <Fragment>
-                  <li className="flex flex-col text-gray-800 text-sm w-full shadow-lg space-y-3">
-                    <span
-                      onClick={(e) => history.push("/user/orders")}
-                      className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer"
+                        </span>
+                      </li>
+                      {/* </div> */}
+                    </Fragment>
+                  ) : (
+                    /* Login Modal Button */
+                    <div
+                      onClick={(e) => loginModalOpen()}
+                      className="cursor-pointer hover:bg-green-400 px-2 py-2 rounded-lg hidden lg:flex "
+                      title="Login"
                     >
-                      <span></span>
-                      <span>My Orders</span>
-                    </span>
-
-                    <span
-                      onClick={(e) => history.push("/wish-list")}
-                      className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer"
-                    >
-                      <span></span>
-                      <span>My Wishlist</span>
-                    </span>
-                    <span
-                      onClick={(e) => history.push("/user/setting")}
-                      className="flex space-x-1 py-2 px-8 hover:bg-green-200 cursor-pointer"
-                    >
-                      <span></span>
-                      <span>Setting</span>
-                    </span>
-                    <span
-                      onClick={(e) => logout()}
-                      className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer"
-                    >
-                      <span className="font-medium tracking-widest text-base hover:text-gray-100  px-3 py-2 rounded-lg cursor-pointer ">
-                        login
-                      </span>
+                      <LoginIcon className="text-black" />
                     </div>
                   )}
                 </div>
+              </div>
+            </div>
+
+            <div
+              className={
+                data.navberHamburger && data.navberHamburger
+                  ? "flex lg:hidden transition-all ease-out duration-500 md:transition-none md:w-auto md:flex-grow md:flex md:items-center mt-2"
+                  : "flex lg:hidden  transition-all ease-out duration-500 md:transition-none md:w-auto md:flex-grow md:flex md:items-center -mt-64"
+              }
+            >
+              <div className="w-full  col-span-1 flex flex-col text-sm text-gray-800 bg-white shadow-sm shadow-green-100 rounded-b-sm opacity-85 space-y-3">
+                <span
+                  className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer text-gray-800 text-sm"
+                  onClick={(e) => history.push("/blog")}
+                >
+                  How to Order
+                </span>
+                <span
+                  className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer text-gray-800 text-sm"
+                  onClick={(e) => history.push("/contact-us")}
+                >
+                  Contact us
+                </span>
+                {localStorage.getItem("jwt") ? (
+                  <Fragment>
+                    <li className="flex flex-col text-gray-800 text-sm w-full shadow-lg space-y-3">
+                      <span
+                        onClick={(e) => history.push("/user/orders")}
+                        className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer"
+                      >
+                        <span></span>
+                        <span>My Orders</span>
+                      </span>
+
+                      <span
+                        onClick={(e) => history.push("/wish-list")}
+                        className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer"
+                      >
+                        <span></span>
+                        <span>My Wishlist</span>
+                      </span>
+                      <span
+                        onClick={(e) => history.push("/user/setting")}
+                        className="flex space-x-1 py-2 px-8 hover:bg-green-200 cursor-pointer"
+                      >
+                        <span></span>
+                        <span>Setting</span>
+                      </span>
+                      <span
+                        onClick={(e) => logout()}
+                        className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer"
+                      >
+                        <span></span>
+                        <span>Log out</span>
+                      </span>
+                    </li>
+                  </Fragment>
+                ) : (
+                  <div
+                    onClick={(e) => loginModalOpen()}
+                    className="cursor-pointer text-white hover:text-gray-100  rounded-lg"
+                    title="Login"
+                  >
+                    <span className="font-medium tracking-widest text-base hover:text-gray-100  px-3 py-2 rounded-lg cursor-pointer ">
+                      login
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
