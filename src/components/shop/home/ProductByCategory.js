@@ -51,7 +51,7 @@ const AllProduct = ({ products }) => {
   return (
     <Fragment>
       <Submenu category={category} />
-      <section className="m-4 md:mx-8 md:my-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <section className="m-4 md:mx-8 md:my-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
         {products && products.length > 0 ? (
           products.map((item, index) => {
             return (
@@ -59,7 +59,7 @@ const AllProduct = ({ products }) => {
                 <div className="relative col-span-1 m-2">
                   <img
                     onClick={(e) => history.push(`/products/${item._id}`)}
-                    className="w-full object-cover object-center cursor-pointer"
+                    className="w-full object-cover object-center cursor-pointer h-40"
                     src={item.pImageUrl}
                     alt=""
                   />
