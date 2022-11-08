@@ -105,22 +105,22 @@ const Navber = (props) => {
           <div className="hidden lg:flex lg:flex-row lg:space-x-3 lg:justify-center col-span-1  text-white py-4 w-full ">
             <span
               className="hover:text-gray-100 px-1 rounded-lg font-light tracking-widest  cursor-pointer"
-              onClick={(e) => history.push("/")}
+              onClick={(e) => history.push("/aboutus")}
             >
-             Gift Shop
+             About us
             </span>
             <span
               className="hover:text-gray-100 px-1 rounded-lg font-light tracking-widest cursor-pointer"
-              onClick={(e) => history.push("/blog")}
+              onClick={(e) => history.push("/howtoorder")}
             >
-              How to order
+              how to Order
             </span>
             <span
               className="hover:text-gray-100 px-1 rounded-lg font-light tracking-widest cursor-pointer"
-              onClick={(e) => history.push("/contact-us")}
+              onClick={(e) => history.push("/contactus")}
             >
               Contact us
-            </span>
+                          </span>
           </div>
           
           <div className=" flex flex-col justify-center">
