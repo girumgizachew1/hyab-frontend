@@ -1,4 +1,10 @@
 import Home from "./home";
+import Aboutus from "./home/Aboutus";
+
+import Howtoorder from "./home/howtoorder";
+
+import Contactus from "./home/contactus";
+
 import WishList from "./wishlist";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import VerifyEmail from "./auth/verifyEmail";
@@ -13,7 +19,10 @@ import ProductDetails from "./productDetails";
 import ProductByCategory from "./home/ProductByCategory";
 import CheckoutPage from "./order/CheckoutPage";
 
-export {  
+export {
+  Aboutus,
+  Howtoorder,  
+  Contactus,
   Home,
   WishList,
   ProtectedRoute,

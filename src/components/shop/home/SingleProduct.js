@@ -64,19 +64,20 @@ const SingleProduct = (props) => {
             <div className="">
               <Fragment key={index}>
                 <div
-                  className="w-72 h-full space-x-5"
-                  onClick={(e) => history.push(`/products/${item._id}`)}
+                  className=" md:w-72 w-full h-fit md:h-fit space-x-5 space-y-5"
+                  onClick={(e) => Redirect(`/products/${item._id}`)}
                 >
-                  <div className="mx-1 col-span-1 w-full h-80 border m-2 rounded-lg border-gray-200 hover:border-red-400 text-black  shadow-lg bg-white">
+                  <div className=" mx-1  col-span-1 w-full h-80 border m-2 rounded-lg border-gray-200 hover:border-red-400 text-black  shadow-lg bg-white">
+                    <div className="bg-red-400">
                     <img
-                      onClick={(e) => history.push(`/products/${item._id}`)}
-                      className="h-44 w-full object-cover object-center shadow-sm shadow-green-100 opacity-90 mt-4"
+                      onClick={(e) => Redirect(`/products/${item._id}`)}
+                      className="h-40 w-full object-cover object-center shadow-sm shadow-green-100 opacity-80 mt-4 "
                       src={item.pImageUrl}
                       alt=""
-                    />
+                    /></div>
 
                     <div className="flex items-center justify-between mt-2 p-2 border-b">
-                      <div className="text-gray-800  text-base truncate">
+                      <div className="text-gray-800 text-sm md:text-base truncate">
                         {item.pName}
                       </div>
                       <div className="flex items-center space-x-1">
@@ -96,13 +97,13 @@ const SingleProduct = (props) => {
                             />
                           </svg>
                         </span>
-                        <span className="text-gray-800">
+                        <span className="text-gray-800 text-sm md:text-base">
                           {item?.pRatingsReviews?.length}
                         </span>
                       </div>
                     </div>
 
-                    <div className="flex flex-row justify-between p-2 border-b">
+                    <div className="flex flex-row justify-between p-2 ">
                       <div>${item.pPrice}.00</div>
                       <button
                         onClick={(e) => history.push(`/products/${item._id}`)}

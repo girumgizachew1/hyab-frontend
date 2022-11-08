@@ -71,46 +71,27 @@ const Navber = (props) => {
 
   return (
     <Fragment>
-      <div
-        className={`inset-0 fixed w-full h-16 z-30  transition duration-300 display ease-in-out  ${
-          !top
-            ? " bg-red-500 backdrop-blur-sm shadow-lg"
-            : "bg-red-500 bg-opacity-75"
-        }`}
-      >
-        <div className="max-w-6xl mx-auto px-5 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3">
-            <div className="bg-white px-3 col-span-2 lg:hidden flex flex-row-reverse justify-between z-10">
-              <div className="flex flex-row-reverse space-x-4">
-                <svg
-                  onClick={(e) => navberToggleOpen()}
-                  className="col-span-1 lg:hidden w-8 h-8 cursor-pointer text-red-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-                {/* Cart Modal Button */}
-                <div
-                  onClick={(e) => cartModalOpen()}
-                  className="col-span-1 lg:hidden w-8 h-8 cursor-pointer text-red-600"
-                  title="Cart"
-                >
-                  <AddShoppingCartIcon></AddShoppingCartIcon>
-
-                  <span className="absolute top-0 mt-1 mr-4 bg-red-700 rounded px-1 text-white text-xs hover:text-gray-200 font-semibold">
-                    {data.cartProduct !== null ? data.cartProduct.length : 0}
-                  </span>
-                </div>
-              </div>
-
+       <div className={`inset-0 fixed w-full h-16 z-30  transition duration-300 display ease-in-out  ${!top ? ' bg-red-400 backdrop-blur-sm shadow-lg':'bg-red-500 bg-opacity-75' }`}>
+      <div className="max-w-6xl mx-auto px-5 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3">
+        <div className="px-3 col-span-2 lg:hidden flex flex-row-reverse justify-between z-10">
+            <div className="flex flex-row-reverse space-x-4"> 
+              <svg
+                onClick={(e) => navberToggleOpen()}
+                className="col-span-1 lg:hidden w-8 h-8 cursor-pointer text-red-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+              {/* Cart Modal Button */}
               <div
                 onClick={(e) => history.push("/")}
                 style={{ letterSpacing: "0.10rem" }}
@@ -313,9 +294,36 @@ const Navber = (props) => {
               >
                 How to Order
               </span>
-              <span
-                className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer text-gray-800 text-sm"
-                onClick={(e) => history.push("/contact-us")}
+          </div>
+
+          <div className="hidden lg:flex lg:flex-row lg:space-x-3 lg:justify-center col-span-1  text-white py-4 w-full ">
+            <span
+              className="hover:text-gray-100 px-1 rounded-lg font-light tracking-widest  cursor-pointer"
+              onClick={(e) => history.push("/aboutus")}
+            >
+             About us
+            </span>
+            <span
+              className="hover:text-gray-100 px-1 rounded-lg font-light tracking-widest cursor-pointer"
+              onClick={(e) => history.push("/howtoorder")}
+            >
+              how to Order
+            </span>
+            <span
+              className="hover:text-gray-100 px-1 rounded-lg font-light tracking-widest cursor-pointer"
+              onClick={(e) => history.push("/contactus")}
+            >
+              Contact us
+                          </span>
+          </div>
+          
+          <div className=" flex flex-col justify-center">
+            <div className="flex space-x-4 items-right -ml-4 col-span-2 lg:col-span-1 lg:mr-4 flex justify-end">
+              {/*  WishList Page Button */}
+              <div
+                onClick={(e) => history.push("/wish-list")}
+                className="hover:text-gray-100 rounded-lg px-2 py-2 cursor-pointer hidden lg:flex"
+                title="Wishlist"
               >
                 Contact us
               </span>
