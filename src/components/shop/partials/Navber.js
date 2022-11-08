@@ -1,43 +1,28 @@
 import React, { Fragment, useEffect, useContext, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-
-import { logout, fetchData } from "./Action";
+import { logout } from "./Action";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import { LayoutContext } from "../index";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import { isAdmin } from "../auth/fetchApi";
 import LoginIcon from "@mui/icons-material/Login";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-
-import axios from "axios";
-// import { fetchData } from "../dashboardUser/Action";
-import { DashboardUserContext } from "../dashboardUser/Layout";
-const apiURL = process.env.REACT_APP_API_URL;
-
 const Navber = (props) => {
   const history = useHistory();
   const location = useLocation();
 
   const { data, dispatch } = useContext(LayoutContext);
-  // console.log(data.loginSignupModal);
-
-  // const userDetails = Emaildata.userDetails !== null ? Emaildata.userDetails : "";
-  // console.log(Emaildata);
-
-  const [email, setEmail] = useState("");
 
   const navberToggleOpen = () =>
     data.navberHamburger
       ? dispatch({ type: "hamburgerToggle", payload: false })
       : dispatch({ type: "hamburgerToggle", payload: true });
 
-  const loginModalOpen = () => {
-    console.log("inside login modal");
+  const loginModalOpen = () =>
     data.loginSignupModal
       ? dispatch({ type: "loginSignupModalToggle", payload: false })
       : dispatch({ type: "loginSignupModalToggle", payload: true });
-  };
 
   const cartModalOpen = () =>
     data.cartModal
@@ -51,36 +36,20 @@ const Navber = (props) => {
     };
     window.addEventListener("scroll", scrollHandler);
     return () => window.removeEventListener("scroll", scrollHandler);
-    // setEmail(userDetails.email);
   }, [top]);
-
-  useEffect(() => {
-    fetchEmail();
-  }, []);
-
-  const fetchEmail = async () => {
-    // dispatch({ type: "loading", payload: true });
-    let userId = JSON.parse(localStorage.getItem("jwt"));
-    try {
-      let res = await fetchData(dispatch);
-      setEmail(res.email);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <Fragment>
       <div
         className={`inset-0 fixed w-full h-16 z-30  transition duration-300 display ease-in-out  ${
           !top
-            ? " bg-red-500 backdrop-blur-sm shadow-lg"
+            ? " bg-red-400 backdrop-blur-sm shadow-lg"
             : "bg-red-500 bg-opacity-75"
         }`}
       >
         <div className="max-w-6xl mx-auto px-5 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-3">
-            <div className="bg-white px-3 col-span-2 lg:hidden flex flex-row-reverse justify-between z-10">
+            <div className="px-3 col-span-2 lg:hidden flex flex-row-reverse justify-between z-10">
               <div className="flex flex-row-reverse space-x-4">
                 <svg
                   onClick={(e) => navberToggleOpen()}
@@ -133,19 +102,19 @@ const Navber = (props) => {
             <div className="hidden lg:flex lg:flex-row lg:space-x-3 lg:justify-center col-span-1  text-white py-4 w-full ">
               <span
                 className="hover:text-gray-100 px-1 rounded-lg font-light tracking-widest  cursor-pointer"
-                onClick={(e) => history.push("/")}
+                onClick={(e) => history.push("/aboutus")}
               >
-                Gift Shop
+                About us
               </span>
               <span
                 className="hover:text-gray-100 px-1 rounded-lg font-light tracking-widest cursor-pointer"
-                onClick={(e) => history.push("/blog")}
+                onClick={(e) => history.push("/howtoorder")}
               >
-                How to order
+                how to Order
               </span>
               <span
                 className="hover:text-gray-100 px-1 rounded-lg font-light tracking-widest cursor-pointer"
-                onClick={(e) => history.push("/contact-us")}
+                onClick={(e) => history.push("/contactus")}
               >
                 Contact us
               </span>
@@ -180,111 +149,182 @@ const Navber = (props) => {
                 </div>
 
                 {localStorage.getItem("jwt") ? (
-                  <div class="flex items-center justify-center mt-0 hidden lg:flex ">
-                    <div class=" relative inline-block text-left dropdown">
-                      <span class="rounded-md shadow-sm">
-                        <button
-                          class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out bg-inherit border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800"
-                          type="button"
-                          aria-haspopup="true"
-                          aria-expanded="true"
-                          aria-controls="headlessui-menu-items-117"
-                        >
-                          <span>
-                            <ManageAccountsIcon />
-                          </span>
-                          <svg
-                            class="w-5 h-5 ml-2 -mr-1"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                          >
-                            <path
-                              fill-rule="evenodd"
-                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                              clip-rule="evenodd"
-                            ></path>
-                          </svg>
-                        </button>
-                      </span>
-                      <div class="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95">
-                        <div
-                          class="absolute right-0 w-56 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
-                          aria-labelledby="headlessui-menu-button-1"
-                          id="headlessui-menu-items-117"
-                          role="menu"
-                        >
-                          <div class="px-4 py-3">
-                            <p class="text-sm leading-5">Signed in as</p>
-                            <p class="text-sm font-medium leading-5 text-gray-900 truncate">
-                              {email}
-                            </p>
-                          </div>
-
-                          {!isAdmin() ? (
-                            <div class="py-1">
-                              <a
+                  <Fragment>
+                    <div
+                      className="userDropdownBtn hover:bg-gray-100 text-black px-2 py-2 rounded-lg hidden lg:flex relative"
+                      title="Logout"
+                    >
+                      <ManageAccountsIcon />
+                      <div className="userDropdown absolute right-0 mt-5 bg-white rounded">
+                        {!isAdmin() ? (
+                          <Fragment>
+                            <li className="flex flex-col text-gray-800 text-sm w-48 shadow-lg">
+                              <span
                                 onClick={(e) => history.push("/user/orders")}
-                                tabindex="0"
-                                className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left hover:bg-gray-200"
-                                role="menuitem"
+                                className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer"
                               >
-                                My Orders
-                              </a>
-                              <a
+                                <span>
+                                  <ListAltIcon />
+                                </span>
+                                <span>My Orders</span>
+                              </span>
+                              <span
                                 onClick={(e) => history.push("/user/profile")}
-                                tabindex="1"
-                                className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left hover:bg-gray-200"
-                                role="menuitem"
+                                className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer"
                               >
-                                My Account
-                              </a>
-                              <a
+                                <span>
+                                  <svg
+                                    className="w-6 h-6"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth={2}
+                                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                                    />
+                                  </svg>
+                                </span>
+                                <span>My Account</span>
+                              </span>
+                              <span
                                 onClick={(e) => history.push("/wish-list")}
-                                tabindex="1"
-                                className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left hover:bg-gray-200"
-                                role="menuitem"
+                                className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer"
                               >
-                                My Wishlist
-                              </a>
-
-                              <a
+                                <span>
+                                  <svg
+                                    className="w-6 h-6"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth={2}
+                                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                    />
+                                  </svg>
+                                </span>
+                                <span>My Wishlist</span>
+                              </span>
+                              <span
                                 onClick={(e) => history.push("/user/setting")}
-                                tabindex="2"
-                                className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left hover:bg-gray-200"
-                                role="menuitem"
+                                className="flex space-x-1 py-2 px-8 hover:bg-green-200 cursor-pointer"
                               >
-                                Setting
-                              </a>
-                            </div>
-                          ) : (
-                            <div class="py-1">
-                              <a
+                                <span>
+                                  <svg
+                                    className="w-6 h-6"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth={2}
+                                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                                    />
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth={2}
+                                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                                    />
+                                  </svg>
+                                </span>
+                                <span>Setting</span>
+                              </span>
+                              <span
+                                onClick={(e) => logout()}
+                                className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer"
+                              >
+                                <span>
+                                  <svg
+                                    className="w-6 h-6"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth={2}
+                                      d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                                    />
+                                  </svg>
+                                </span>
+                                <span>Logout</span>
+                              </span>
+                            </li>
+                          </Fragment>
+                        ) : (
+                          <Fragment>
+                            <li className="flex flex-col text-blue-800 w-48 shadow-lg">
+                              <span
                                 onClick={(e) =>
                                   history.push("/admin/dashboard")
                                 }
-                                tabindex="2"
-                                className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left hover:bg-gray-200"
-                                role="menuitem"
+                                className="flex space-x-2 py-2 px-8 hover:bg-gray-100 cursor-pointer"
                               >
-                                Admin Panel
-                              </a>
-                            </div>
-                          )}
-
-                          <div class="py-1">
-                            <a
-                              onClick={(e) => logout()}
-                              tabindex="3"
-                              className="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left hover:bg-gray-200"
-                              role="menuitem"
-                            >
-                              Sign out
-                            </a>
-                          </div>
-                        </div>
+                                <span>
+                                  <svg
+                                    className="w-6 h-6"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth={2}
+                                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                                    />
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth={2}
+                                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                                    />
+                                  </svg>
+                                </span>
+                                <span>Admin Panel</span>
+                              </span>
+                              <span
+                                onClick={(e) => logout()}
+                                className="flex space-x-2 py-2 px-8 hover:bg-blue-600 cursor-pointer"
+                              >
+                                <span>
+                                  <svg
+                                    className="w-6 h-6"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth={2}
+                                      d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                                    />
+                                  </svg>
+                                </span>
+                                <span>Logout</span>
+                              </span>
+                            </li>
+                          </Fragment>
+                        )}
                       </div>
                     </div>
-                  </div>
+                  </Fragment>
                 ) : (
                   /* Login Modal Button */
                   <div
@@ -293,74 +333,6 @@ const Navber = (props) => {
                     title="Login"
                   >
                     <LoginIcon className="text-black" />
-                  </div>
-                )}
-              </div>
-            </div>
-
-            <div
-              className={
-                data.navberHamburger && data.navberHamburger
-                  ? "flex lg:hidden transition-all ease-out duration-500 md:transition-none md:w-auto md:flex-grow md:flex md:items-center mt-2"
-                  : "flex lg:hidden  transition-all ease-out duration-500 md:transition-none md:w-auto md:flex-grow md:flex md:items-center -mt-64"
-              }
-            >
-              <div className="w-full  col-span-1 flex flex-col text-sm text-gray-800 bg-white shadow-sm shadow-green-100 rounded-b-sm opacity-85 space-y-3">
-                <span
-                  className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer text-gray-800 text-sm"
-                  onClick={(e) => history.push("/blog")}
-                >
-                  How to Order
-                </span>
-                <span
-                  className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer text-gray-800 text-sm"
-                  onClick={(e) => history.push("/contact-us")}
-                >
-                  Contact us
-                </span>
-                {localStorage.getItem("jwt") ? (
-                  <Fragment>
-                    <li className="flex flex-col text-gray-800 text-sm w-full shadow-lg space-y-3">
-                      <span
-                        onClick={(e) => history.push("/user/orders")}
-                        className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer"
-                      >
-                        <span></span>
-                        <span>My Orders</span>
-                      </span>
-
-                      <span
-                        onClick={(e) => history.push("/wish-list")}
-                        className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer"
-                      >
-                        <span></span>
-                        <span>My Wishlist</span>
-                      </span>
-                      <span
-                        onClick={(e) => history.push("/user/setting")}
-                        className="flex space-x-1 py-2 px-8 hover:bg-green-200 cursor-pointer"
-                      >
-                        <span></span>
-                        <span>Setting</span>
-                      </span>
-                      <span
-                        onClick={(e) => logout()}
-                        className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer"
-                      >
-                        <span></span>
-                        <span>Log out</span>
-                      </span>
-                    </li>
-                  </Fragment>
-                ) : (
-                  <div
-                    onClick={(e) => loginModalOpen()}
-                    className="cursor-pointer text-white hover:text-gray-100  rounded-lg"
-                    title="Login"
-                  >
-                    <span className="font-medium tracking-widest text-base hover:text-gray-100  px-3 py-2 rounded-lg cursor-pointer ">
-                      login
-                    </span>
                   </div>
                 )}
               </div>
@@ -417,7 +389,7 @@ const Navber = (props) => {
                       className="flex space-x-2 py-2 px-8 hover:bg-green-200 cursor-pointer"
                     >
                       <span></span>
-                      <span>Log out</span>
+                      <span>Logout</span>
                     </span>
                   </li>
                 </Fragment>
@@ -436,14 +408,6 @@ const Navber = (props) => {
           </div>
         </div>
       </div>
-
-      <style>
-        {`.dropdown:focus-within .dropdown-menu {
-            opacity:1;
-            transform: translate(0) scale(1);
-            visibility: visible;
-          }`}
-      </style>
     </Fragment>
   );
 };
