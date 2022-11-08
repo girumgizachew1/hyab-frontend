@@ -35,6 +35,7 @@ const AllCategory = (props) => {
       </div>
     );
   }
+  
   return (
     <Fragment>
       <div className="col-span-1 overflow-auto bg-white shadow-lg p-4">
