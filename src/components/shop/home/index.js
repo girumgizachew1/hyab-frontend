@@ -7,7 +7,9 @@ import SingleProduct from "./SingleProduct";
 import NewProduct from "./newproducts";
 
 import SpecialProduct from "./specialproducts";
-import comingsoon from'../../../assets/comingsoon.png'
+import comingsoon from'../../../assets/product1.gif'
+
+import comingsoon2 from'../../../assets/comingsoon.png'
 
 import CategoriesList from "./CategoryList";
 
@@ -16,10 +18,8 @@ export const HomeContext = createContext();
 const HomeComponent = () => {
   return (
     <Fragment>
-        <div >
-            <Slider />
-        </div>
-        <section className="border-b p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-2">
+       
+        <section className="mt-16 border-b p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-2">
           <CategoriesList />
         </section>
 
@@ -29,17 +29,21 @@ const HomeComponent = () => {
               <SpecialProduct/>
             </div>
         </div>
-        <div className='flex flex-row w-full' >
+
+
+        <div className='flex lg:flex-row w-screen flex-col' >
             <div className='banner basis-1/4'>
                 <div>
-                <img className='w-full ml-16 py-10 px-10' src={comingsoon}  alt="img"></img>
+                <img className='w-full py-1 lg:hidden' src={comingsoon}  alt="img"></img>
+                
+                <img className='w-full md:ml-16 py-10 px-10 hidden lg:block' src={comingsoon2}  alt="img"></img>
                 </div>
             </div>
           {/* Product Section */}
       
             <div>
-              <h1 className='ml-20 py-4 text-4xl text-gray-800 font-semibold mx-auto' >Explore our Popular products</h1>
-              <section className="basis-3/4 w-full space-x-4 md:px-12 lg:px-20 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 mb-10  ">
+              <h1 className='ml-20 py-4 text-xl lg:text-4xl text-gray-800 font-semibold mx-auto' >Explore our Popular products</h1>
+              <section className="basis-3/4 w-40vh h-fit mx-6 md:space-x-4 lg:px-20 grid my-2 md:my-0  gap-2 md:gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3  mb-10">
                 <SingleProduct />
               </section>
             </div>

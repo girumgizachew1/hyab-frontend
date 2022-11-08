@@ -40,10 +40,10 @@ const Navber = (props) => {
 
   return (
     <Fragment>
-       <div className={`inset-0 fixed w-full h-16 z-30  transition duration-300 display ease-in-out  ${!top ? ' bg-red-500 backdrop-blur-sm shadow-lg':'bg-red-500 bg-opacity-75' }`}>
+       <div className={`inset-0 fixed w-full h-16 z-30  transition duration-300 display ease-in-out  ${!top ? ' bg-red-400 backdrop-blur-sm shadow-lg':'bg-red-500 bg-opacity-75' }`}>
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-3">
-        <div className="bg-white px-3 col-span-2 lg:hidden flex flex-row-reverse justify-between z-10">
+        <div className="px-3 col-span-2 lg:hidden flex flex-row-reverse justify-between z-10">
             <div className="flex flex-row-reverse space-x-4"> 
               <svg
                 onClick={(e) => navberToggleOpen()}
