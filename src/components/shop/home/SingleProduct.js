@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect, useContext } from "react";
-import { Redirect ,useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { getAllProduct, getActiveProduct } from "../../admin/products/FetchApi";
 import { HomeContext } from "./index";
 import { isWishReq, unWishReq, isWish } from "./Mixins";
