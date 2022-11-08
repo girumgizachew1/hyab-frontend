@@ -35,6 +35,7 @@ const AllCategory = (props) => {
       </div>
     );
   }
+  
   return (
     <Fragment>
       <div className="col-span-1 overflow-auto bg-white shadow-lg p-4">
@@ -95,29 +96,29 @@ const CategoryTable = ({ order, editOrder }) => {
     <Fragment>
       <tr className="border-b">
         <td className="w-48 hover:bg-gray-200 p-2 flex flex-col space-y-1">
-          {order.allProduct.map((product, i) => {
+          {order?.allProduct.map((product, i) => {
             return (
               <span className="block flex items-center space-x-2" key={i}>
                 <img
                   className="w-8 h-8 object-cover object-center"
-                  src={product.id.pImageUrl}
+                  src={product?.id?.pImageUrl}
                   alt="productImage"
                 />
-                <span>{product.id.pName}</span>
-                <span>{product.quantitiy}x</span>
+                <span>{product?.id?.pName}</span>
+                <span>{product?.quantitiy}x</span>
               </span>
             );
           })}
         </td>
         <td className="hover:bg-gray-200 p-2 text-center cursor-default">
-          {order.status === "Not processed" && (
+          {order?.status === "Not processed" && (
             <span className="block text-red-600 rounded-full text-center text-xs px-2 font-semibold">
-              {order.status}
+              {order?.status}
             </span>
           )}
-          {order.status === "Processing" && (
+          {order?.status === "Processing" && (
             <span className="block text-yellow-600 rounded-full text-center text-xs px-2 font-semibold">
-              {order.status}
+              {order?.status}
             </span>
           )}
           {order.status === "Shipped" && (

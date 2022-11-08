@@ -142,7 +142,7 @@ const EditProductModal = (props) => {
                     storageRef.getDownloadURL().then((urls) => {
                       setShow(false);
                       collectionRef.add({ urls, createdAt });
-                      setEditformdata({ ...editProduct, pImageUrl: urls });
+                      // setEditformdata({ ...editProduct, pImageUrl: urls });
                       setUrls((prevState) => [...prevState, urls]);
                     });
                     const createdAt = timestamp();

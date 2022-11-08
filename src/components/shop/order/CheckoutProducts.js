@@ -141,18 +141,19 @@ export const CheckoutComponent = (props) => {
     <Fragment>
       <section className="mx-4 mt-20 md:mx-12 md:mt-32 lg:mt-24">
         {/* Product List */}
-        <div className="text-2xl mx-2">Order</div>
-        <div className="flex flex-col md:flex md:space-x-2 md:flex-row-reverse">
-          <div className="md:w-1/2">
+        <div className="flex flex-col md:flex md:space-x-2 md:flex-col md:w-5/6 md:m-auto">
+          <div className="md:w-full m-auto">
+            <div className="text-2xl mx-2">Order</div>
             <CheckoutProducts products={data.cartProduct} />
           </div>
-          <div className="w-full order-first md:order-last md:w-1/2">
+
+          <div className="w-full order-first md:order-last">
+            <div className="text-2xl mx-0">Shiping Address</div>
             {state.clientToken !== null ? (
               <Fragment>
-                <div className="text-2xl mx-2">Shiping Address</div>
                 <div
                   onBlur={(e) => setState({ ...state, error: false })}
-                  className="p-4 md:p-8"
+                  className="px-4 py-1 md:p-8"
                 >
                   {state.error ? (
                     <div className="bg-red-200 py-2 px-4 rounded">
@@ -162,187 +163,178 @@ export const CheckoutComponent = (props) => {
                     ""
                   )}
 
-                  <div className="flex flex-col py-2">
-                    <label htmlFor="name" className="pb-2">
-                      Reciver Full Name
-                    </label>
-                    <input
-                      value={state.name}
-                      onChange={(e) =>
-                        setState({
-                          ...state,
-                          name: e.target.value,
-                          error: false,
-                        })
-                      }
-                      type="text"
-                      id="name"
-                      className="border px-4 py-2"
-                      placeholder="Full Name..."
-                    />
-                  </div>
+                  <div className="flex flex-row space-x-5 w-full">
+                    <div className="flex flex-col space-y-5 w-1/2">
+                      <div className="flex flex-col py-2 w-full">
+                        <label htmlFor="name" className="pb-2">
+                          Reciver Full Name
+                        </label>
+                        <input
+                          value={state.name}
+                          onChange={(e) =>
+                            setState({
+                              ...state,
+                              name: e.target.value,
+                              error: false,
+                            })
+                          }
+                          type="text"
+                          id="name"
+                          className="border px-4 py-2"
+                          placeholder="Full Name..."
+                        />
+                      </div>
 
-                  <div className="flex flex-col py-2">
-                    <label htmlFor="country" className="pb-2">
-                      Country
-                    </label>
-                    <Select
-                      value={state.country}
-                      onChange={(e) =>
-                        setState({
-                          ...state,
-                          country: e.target.value,
-                          error: false,
-                        })
-                      }
-                    >
-                      {country_list?.map((country) => {
-                        return <MenuItem value={country}>{country}</MenuItem>;
-                      })}
-                    </Select>
-                    {/* <input
-                      value={state.address}
-                      onChange={(e) =>
-                        setState({
-                          ...state,
-                          address: e.target.value,
-                          error: false,
-                        })
-                      }
-                      type="text"
-                      id="address"
-                      className="border px-4 py-2"
-                      placeholder="Address..."
-                    /> */}
-                  </div>
+                      <div className="flex flex-col py-2 w-full">
+                        <label htmlFor="city" className="pb-2">
+                          City / Town
+                        </label>
+                        <input
+                          value={state.city}
+                          onChange={(e) =>
+                            setState({
+                              ...state,
+                              city: e.target.value,
+                              error: false,
+                            })
+                          }
+                          type="text"
+                          id="city"
+                          className="border px-4 py-2"
+                          placeholder="City..."
+                        />
+                      </div>
 
-                  <div className="flex flex-col py-2">
-                    <label htmlFor="city" className="pb-2">
-                      City / Town
-                    </label>
-                    <input
-                      value={state.city}
-                      onChange={(e) =>
-                        setState({
-                          ...state,
-                          city: e.target.value,
-                          error: false,
-                        })
-                      }
-                      type="text"
-                      id="city"
-                      className="border px-4 py-2"
-                      placeholder="City..."
-                    />
-                  </div>
+                      <div className="flex flex-col py-2 w-full">
+                        <label htmlFor="occasion" className="pb-2">
+                          Occasion
+                        </label>
+                        <select
+                          value={state.occasion}
+                          className="px-4 py-2 border focus:outline-none"
+                          onChange={(e) =>
+                            setState({
+                              ...state,
+                              occasion: e.target.value,
+                              error: false,
+                            })
+                          }
+                        >
+                          {occastion_list?.map((occastion) => {
+                            return (
+                              <option value={occastion}>{occastion}</option>
+                            );
+                          })}
+                        </select>
+                      </div>
 
-                  <div className="flex flex-col py-2">
-                    <label htmlFor="address" className="pb-2">
-                      Street Address
-                    </label>
-                    <input
-                      value={state.address}
-                      onChange={(e) =>
-                        setState({
-                          ...state,
-                          address: e.target.value,
-                          error: false,
-                        })
-                      }
-                      type="text"
-                      id="address"
-                      className="border px-4 py-2"
-                      placeholder="Address..."
-                    />
-                  </div>
+                      <div className="flex flex-col py-2 mb-2 w-full">
+                        <label htmlFor="phone" className="pb-2">
+                          Reciver Phone Number
+                        </label>
+                        <input
+                          value={state.phone}
+                          onChange={(e) =>
+                            setState({
+                              ...state,
+                              phone: e.target.value,
+                              error: false,
+                            })
+                          }
+                          type="number"
+                          id="phone"
+                          className="border px-4 py-2"
+                          placeholder="+880"
+                        />
+                      </div>
+                    </div>
 
-                  <div className="flex flex-col py-2">
-                    <label htmlFor="code" className="pb-2">
-                      Post code
-                    </label>
-                    <input
-                      value={state.postCode}
-                      onChange={(e) =>
-                        setState({
-                          ...state,
-                          postCode: e.target.value,
-                          error: false,
-                        })
-                      }
-                      type="text"
-                      id="code"
-                      className="border px-4 py-2"
-                      placeholder="Post code..."
-                    />
-                  </div>
+                    <div className="flex flex-col space-y-5 w-1/2">
+                      <div className="flex flex-col py-2 w-full">
+                        <label htmlFor="country" className="pb-2">
+                          Country
+                        </label>
+                        <select
+                          value={state.country}
+                          className="px-4 py-2 border focus:outline-none"
+                          onChange={(e) =>
+                            setState({
+                              ...state,
+                              country: e.target.value,
+                              error: false,
+                            })
+                          }
+                          name="country"
+                          id="country"
+                        >
+                          {country_list?.map((country) => {
+                            return (
+                              <option
+                                name="country"
+                                // className=" py-0"
+                                value={country}
+                              >
+                                {country}
+                              </option>
+                            );
+                          })}
+                        </select>
+                        {/* <input
+                            value={state.address}
+                            onChange={(e) =>
+                              setState({
+                                ...state,
+                                address: e.target.value,
+                                error: false,
+                              })
+                            }
+                            type="text"
+                            id="address"
+                            className="border px-4 py-2"
+                            placeholder="Address..."
+                          /> */}
+                      </div>
 
-                  <div className="flex flex-col py-2 mb-2">
-                    <label htmlFor="phone" className="pb-2">
-                      Reciver Phone Number
-                    </label>
-                    <input
-                      value={state.phone}
-                      onChange={(e) =>
-                        setState({
-                          ...state,
-                          phone: e.target.value,
-                          error: false,
-                        })
-                      }
-                      type="number"
-                      id="phone"
-                      className="border px-4 py-2"
-                      placeholder="+880"
-                    />
-                  </div>
+                      <div className="flex flex-col py-2 w-full ">
+                        <label htmlFor="address" className="pb-2">
+                          Street Address
+                        </label>
+                        <input
+                          value={state.address}
+                          onChange={(e) =>
+                            setState({
+                              ...state,
+                              address: e.target.value,
+                              error: false,
+                            })
+                          }
+                          type="text"
+                          id="address"
+                          className="border px-4 py-2"
+                          placeholder="Address..."
+                        />
+                      </div>
 
-                  <div className="flex flex-col py-2">
-                    <label htmlFor="occasion" className="pb-2">
-                      Occasion
-                    </label>
-                    <Select
-                      value={state.occasion}
-                      onChange={(e) =>
-                        setState({
-                          ...state,
-                          occasion: e.target.value,
-                          error: false,
-                        })
-                      }
-                    >
-                      {occastion_list?.map((occastion) => {
-                        return (
-                          <MenuItem value={occastion}>{occastion}</MenuItem>
-                        );
-                      })}
-                    </Select>
-                  </div>
-
-                  <DropIn
-                    options={{
-                      authorization: state.clientToken,
-                      paypal: {
-                        flow: "vault",
-                      },
-                    }}
-                    onInstance={(instance) => (state.instance = instance)}
-                  />
-                  <div
-                    onClick={(e) =>
-                      pay(
-                        data,
-                        dispatch,
-                        state,
-                        setState,
-                        getPaymentProcess,
-                        totalCost,
-                        history
-                      )
-                    }
-                    className="w-full px-4 py-2 text-center text-white font-semibold cursor-pointer"
-                    style={{ background: "#303031" }}
-                  >
-                    Pay now
+                      <div className="flex flex-col py-2 w-full">
+                        <label htmlFor="code" className="pb-2">
+                          Post code
+                        </label>
+                        <input
+                          value={state.postCode}
+                          onChange={(e) =>
+                            setState({
+                              ...state,
+                              postCode: e.target.value,
+                              error: false,
+                            })
+                          }
+                          type="text"
+                          id="code"
+                          className="border px-4 py-2"
+                          placeholder="Post code..."
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </Fragment>
@@ -365,6 +357,36 @@ export const CheckoutComponent = (props) => {
               </div>
             )}
           </div>
+
+          <div className="md:w-full m-auto pb-10 md:order-last">
+            <div className="text-2xl mx-0">Payment</div>
+            <DropIn
+              options={{
+                authorization: state.clientToken,
+                paypal: {
+                  flow: "vault",
+                },
+              }}
+              onInstance={(instance) => (state.instance = instance)}
+            />
+            <div
+              onClick={(e) =>
+                pay(
+                  data,
+                  dispatch,
+                  state,
+                  setState,
+                  getPaymentProcess,
+                  totalCost,
+                  history
+                )
+              }
+              className="w-full px-4 py-2 text-center text-white font-semibold cursor-pointer"
+              style={{ background: "#303031" }}
+            >
+              Pay now
+            </div>
+          </div>
         </div>
       </section>
     </Fragment>
@@ -384,23 +406,23 @@ const CheckoutProducts = ({ products }) => {
                 key={index}
                 className="col-span-1 m-2 md:py-6 md:border-t md:border-b md:my-2 md:mx-0 md:flex md:items-center md:justify-between"
               >
-                <div className="md:flex md:items-center md:space-x-4">
+                <div className="md:flex md:flex-row md:w-full md:justify-between md:space-x-4">
                   <img
                     onClick={(e) => history.push(`/products/${product._id}`)}
                     className="cursor-pointer md:h-20 md:w-20 object-cover object-center"
                     src={product.pImageUrl[0]}
                     alt="wishListproduct"
                   />
-                  <div className="text-lg md:ml-6 truncate">
+                  <div className="text-lg md:ml-6 truncate md:flex md:flex-col md:justify-center">
                     {product.pName}
                   </div>
-                  <div className="md:ml-6 font-semibold text-gray-600 text-sm">
+                  <div className="md:ml-6 font-semibold text-gray-600 text-sm md:flex md:flex-col md:justify-center">
                     Price : ${product.pPrice}.00{" "}
                   </div>
-                  <div className="md:ml-6 font-semibold text-gray-600 text-sm">
+                  <div className="md:ml-6 font-semibold text-gray-600 text-sm md:flex md:flex-col md:justify-center">
                     Quantitiy : {quantity(product._id)}
                   </div>
-                  <div className="font-semibold text-gray-600 text-sm">
+                  <div className="font-semibold text-gray-600 text-sm md:flex md:flex-col md:justify-center">
                     Subtotal : ${subTotal(product._id, product.pPrice)}.00
                   </div>
                 </div>

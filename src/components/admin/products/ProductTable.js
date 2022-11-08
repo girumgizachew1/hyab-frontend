@@ -1,5 +1,5 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
-import { getAllProduct,getActiveProduct, deleteProduct } from "./FetchApi";
+import { getAllProduct, getActiveProduct, deleteProduct } from "./FetchApi";
 import moment from "moment";
 import { ProductContext } from "./index";
 
@@ -30,13 +30,29 @@ const AllProduct = (props) => {
     }, 1000);
   };
 
+  // function myFunction() {
+  //   let text;
+  //   if (confirm("Sure you want to delete this product") == true) {
+  //     text = "You pressed OK!";
+  //   } else {
+  //     text = "You canceled!";
+  //   }
+  //   document.getElementById("demo").innerHTML = text;
+  // }
+
   const deleteProductReq = async (pId) => {
-    let deleteC = await deleteProduct(pId);
-    if (deleteC.error) {
-      console.log(deleteC.error);
-    } else if (deleteC.success) {
-      console.log(deleteC.success);
-      fetchData();
+    if (1) {
+      console.log("delte");
+    } else {
+      if (window.confirm("Sure you want to delete this product") == true) {
+        let deleteC = await deleteProduct(pId);
+        if (deleteC.error) {
+          console.log(deleteC.error);
+        } else if (deleteC.success) {
+          console.log(deleteC.success);
+          fetchData();
+        }
+      }
     }
   };
 
