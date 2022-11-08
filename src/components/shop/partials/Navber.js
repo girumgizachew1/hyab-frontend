@@ -214,7 +214,7 @@ const Navber = (props) => {
                           role="menu"
                         >
                           <div class="px-4 py-3">
-                            <p class="text-sm leading-5">Signed in as</p>
+                            <p class="text-sm leading-5">signed in as</p>
                             <p class="text-sm font-medium leading-5 text-gray-900 truncate">
                               {email}
                             </p>
