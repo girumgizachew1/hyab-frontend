@@ -8,7 +8,7 @@ import Contactus from "./home/contactus";
 import WishList from "./wishlist";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import VerifyEmail from "./auth/verifyEmail";
-import PasswordReset from "./auth/PasswordReset"
+import PasswordReset from "./auth/PasswordReset";
 import AdminProtectedRoute from "./auth/AdminProtectedRoute";
 import CartProtectedRoute from "./auth/CartProtectedRoute";
 import { LayoutContext } from "./layout";
@@ -18,10 +18,12 @@ import PageNotFound from "./layout/PageNotFound";
 import ProductDetails from "./productDetails";
 import ProductByCategory from "./home/ProductByCategory";
 import CheckoutPage from "./order/CheckoutPage";
+import Chat from "./chat";
 
 export {
   Aboutus,
-  Howtoorder,  
+  Chat,
+  Howtoorder,
   Contactus,
   Home,
   WishList,
@@ -38,5 +40,5 @@ export {
   ProductByCategory,
   CheckoutPage,
   VerifyEmail,
-  PasswordReset
+  PasswordReset,
 };

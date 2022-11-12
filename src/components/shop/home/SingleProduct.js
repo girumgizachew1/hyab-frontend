@@ -56,6 +56,7 @@ const SingleProduct = (props) => {
       </div>
     );
   }
+
   return (
     <Fragment>
       {products && products.length > 0 ? (
@@ -65,16 +66,17 @@ const SingleProduct = (props) => {
               <Fragment key={index}>
                 <div
                   className=" md:w-72 w-full h-fit md:h-fit space-x-5 space-y-5"
-                  onClick={(e) => Redirect(`/products/${item._id}`)}
+                  onClick={(e) => history.push(`/products/${item._id}`)}
                 >
                   <div className=" mx-1  col-span-1 w-full h-80 border m-2 rounded-lg border-gray-200 hover:border-red-400 text-black  shadow-lg bg-white">
                     <div className="bg-red-400">
-                    <img
-                      onClick={(e) => Redirect(`/products/${item._id}`)}
-                      className="h-40 w-full object-cover object-center shadow-sm shadow-green-100 opacity-80 mt-4 "
-                      src={item.pImageUrl}
-                      alt=""
-                    /></div>
+                      <img
+                        onClick={(e) => history.push(`/products/${item._id}`)}
+                        className="h-40 w-full object-cover object-center shadow-sm shadow-green-100 opacity-80 mt-4 "
+                        src={item.pImageUrl}
+                        alt=""
+                      />
+                    </div>
 
                     <div className="flex items-center justify-between mt-2 p-2 border-b">
                       <div className="text-gray-800 text-sm md:text-base truncate">

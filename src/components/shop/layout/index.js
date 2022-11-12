@@ -2,6 +2,7 @@ import React, { Fragment, createContext } from "react";
 import { Navber, Footer, Footer1, CartModal } from "../partials";
 //import LoginSignup from "../auth/LoginSignup";
 import LoginSignup from "../auth/LoginSignup";
+import Chat from "../chat";
 export const LayoutContext = createContext();
 
 const Layout = ({ children }) => {
@@ -22,6 +23,7 @@ const Layout = ({ children }) => {
       <div className="rounded-lg">
         <Footer />
       </div>
+      <Chat />
     </Fragment>
   );
 };
