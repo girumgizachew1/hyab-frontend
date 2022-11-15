@@ -65,6 +65,12 @@ export const pay = async (
                 transactionId: res.transaction.id,
                 address: state.address,
                 phone: state.phone,
+                firstName: state.first_name,
+                lastName: state.last_name,
+                country: state.country,
+                city: state.city,
+                postCode: state.postCode,
+                occasion: state.occasion,
               };
               try {
                 let resposeData = await createOrder(orderData);

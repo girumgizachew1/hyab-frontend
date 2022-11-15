@@ -66,6 +66,7 @@ export const createProduct = async (
     pImageUrl,
     pPrice,
     pOffer,
+    pWorldWide,
   },
   urls
 ) => {
@@ -96,6 +97,7 @@ export const createProduct = async (
       pImageUrl: urls,
       pOffer,
       pStatus,
+      pWorldWide,
     });
     return res.data;
   } catch (error) {

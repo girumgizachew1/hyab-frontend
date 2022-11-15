@@ -17,7 +17,8 @@ export const CheckoutComponent = (props) => {
 
   const [state, setState] = useState({
     // Street Address: "",
-    name: "",
+    first_name: "",
+    last_name: "",
     phone: "",
     address: "",
     postCode: "",
@@ -137,6 +138,7 @@ export const CheckoutComponent = (props) => {
       </div>
     );
   }
+
   return (
     <Fragment>
       <section className="mx-4 mt-20 md:mx-12 md:mt-32 lg:mt-24">
@@ -166,22 +168,22 @@ export const CheckoutComponent = (props) => {
                   <div className="flex flex-row space-x-5 w-full">
                     <div className="flex flex-col space-y-5 w-1/2">
                       <div className="flex flex-col py-2 w-full">
-                        <label htmlFor="name" className="pb-2">
-                          Reciver Full Name
+                        <label htmlFor="first_name" className="pb-2">
+                          First Name
                         </label>
                         <input
-                          value={state.name}
+                          value={state.first_name}
                           onChange={(e) =>
                             setState({
                               ...state,
-                              name: e.target.value,
+                              first_name: e.target.value,
                               error: false,
                             })
                           }
                           type="text"
-                          id="name"
+                          id="first_name"
                           className="border px-4 py-2"
-                          placeholder="Full Name..."
+                          placeholder="First Name..."
                         />
                       </div>
 
@@ -251,6 +253,26 @@ export const CheckoutComponent = (props) => {
 
                     <div className="flex flex-col space-y-5 w-1/2">
                       <div className="flex flex-col py-2 w-full">
+                        <label htmlFor="last_name" className="pb-2">
+                          Last Name
+                        </label>
+                        <input
+                          value={state.last_name}
+                          onChange={(e) =>
+                            setState({
+                              ...state,
+                              last_name: e.target.value,
+                              error: false,
+                            })
+                          }
+                          type="text"
+                          id="last_name"
+                          className="border px-4 py-2"
+                          placeholder="Last Name..."
+                        />
+                      </div>
+
+                      <div className="flex flex-col py-2 w-full">
                         <label htmlFor="country" className="pb-2">
                           Country
                         </label>
@@ -264,6 +286,7 @@ export const CheckoutComponent = (props) => {
                               error: false,
                             })
                           }
+                          // defaultValue="Ethiopia"
                           name="country"
                           id="country"
                         >
@@ -279,20 +302,6 @@ export const CheckoutComponent = (props) => {
                             );
                           })}
                         </select>
-                        {/* <input
-                            value={state.address}
-                            onChange={(e) =>
-                              setState({
-                                ...state,
-                                address: e.target.value,
-                                error: false,
-                              })
-                            }
-                            type="text"
-                            id="address"
-                            className="border px-4 py-2"
-                            placeholder="Address..."
-                          /> */}
                       </div>
 
                       <div className="flex flex-col py-2 w-full ">
@@ -371,6 +380,10 @@ export const CheckoutComponent = (props) => {
             />
             <div
               onClick={(e) =>
+                // {
+                //   console.log(state);
+                //   console.log(state.country);
+                // }
                 pay(
                   data,
                   dispatch,

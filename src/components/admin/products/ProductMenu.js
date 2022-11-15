@@ -6,6 +6,7 @@ import EditProductModal from "./EditProductModal";
 import { getAllCategory } from "../categories/FetchApi";
 
 import { filterOrder } from "../orders/Actions";
+import { filterProduct } from "../products/Actions";
 
 const ProductMenu = (props) => {
   const { data, dispatch } = useContext(ProductContext);
@@ -19,7 +20,7 @@ const ProductMenu = (props) => {
   const fetchCategoryData = async () => {
     let responseData = await getAllCategory();
     if (responseData.Categories) {
-      console.log(responseData.Categories);
+      // console.log(responseData.Categories);
       setCategories(responseData.Categories);
     }
   };
@@ -78,7 +79,7 @@ const ProductMenu = (props) => {
           >
             <span
               onClick={(e) =>
-                filterOrder("All", data, dispatch, dropdown, setDropdown)
+                filterProduct("All", data, dispatch, dropdown, setDropdown)
               }
               className="px-4 py-2 hover:bg-black text-center cursor-pointer"
             >
@@ -89,8 +90,8 @@ const ProductMenu = (props) => {
                   return (
                     <span
                       onClick={(e) =>
-                        filterOrder(
-                          "All",
+                        filterProduct(
+                          category,
                           data,
                           dispatch,
                           dropdown,

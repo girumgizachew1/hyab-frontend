@@ -35,7 +35,7 @@ const AllCategory = (props) => {
       </div>
     );
   }
-  
+
   return (
     <Fragment>
       <div className="col-span-1 overflow-auto bg-white shadow-lg p-4">
@@ -148,7 +148,15 @@ const CategoryTable = ({ order, editOrder }) => {
           {order.user.email}
         </td>
         <td className="hover:bg-gray-200 p-2 text-center">{order.phone}</td>
-        <td className="hover:bg-gray-200 p-2 text-center">{order.address}</td>
+
+        <td className="w-48 hover:bg-gray-200 p-2 flex flex-col space-y-1">
+          <span>
+            {order?.country}, {order?.city}
+          </span>
+          <span>{order.address}</span>
+          <span>Post code: {order.postCode}</span>
+        </td>
+
         <td className="hover:bg-gray-200 p-2 text-center">
           {moment(order.createdAt).format("lll")}
         </td>

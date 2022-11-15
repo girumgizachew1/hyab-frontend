@@ -220,12 +220,19 @@ const ProductDetailsSection = (props) => {
             <div className="my-4 md:my-6 text-gray-600">
               {sProduct.pDescription}
             </div>
-
-            <div className="m-4 md:mx-8 md:my-6 flex justify-center capitalize font-light tracking-widest bg-white border-t border-b text-gray-800 px-4 py-4 space-x-4">
-              <div>
-                <span>Only available in Ethiopia</span>
+            {sProduct?.pWorldWide ? (
+              <div className="m-4 md:mx-8 md:my-6 flex justify-center capitalize font-light tracking-widest bg-white border-t border-b text-gray-800 px-4 py-4 space-x-4">
+                <div>
+                  <span>Available in All Country</span>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="m-4 md:mx-8 md:my-6 flex justify-center capitalize font-light tracking-widest bg-white border-t border-b text-gray-800 px-4 py-4 space-x-4">
+                <div>
+                  <span>Only available in Ethiopia</span>
+                </div>
+              </div>
+            )}
 
             <div className="my-4 md:my-6">
               {+quantitiy === +sProduct.pQuantity ? (
