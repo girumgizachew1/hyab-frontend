@@ -19,12 +19,7 @@ const Slider = (props) => {
           />            
             <div className="absolute inset-0 flex flex-col justify-center space-y-10 items-center md:items-start md:px-20">
         
-              <a
-                href="#shop"
-                className="bg-white cursor-pointer box-border text-3xl md:text-3xl text-black mx-8 px-4 py-2 rounded"
-              >
-                Shop Now
-              </a>
+             
             </div>
       </div>
     </Fragment>    
