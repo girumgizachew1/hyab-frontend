@@ -1,12 +1,13 @@
 import React, { Fragment, useState, useEffect, useContext } from "react";
 import { Redirect } from "react-router-dom";
-import { getNewProduct} from "../../admin/products/FetchApi";
+import { getNewProduct } from "../../admin/products/FetchApi";
 import { HomeContext } from "./index";
 import { isWishReq, unWishReq, isWish } from "./Mixins";
-
+import { useHistory } from "react-router-dom";
 const apiURL = process.env.REACT_APP_API_URL;
 
 const SpecialProduct = (props) => {
+  const history = useHistory();
   const { data, dispatch } = useContext(HomeContext);
   const { newproducts } = data;
   /* WhisList State */
@@ -57,26 +58,25 @@ const SpecialProduct = (props) => {
   }
   return (
     <Fragment>
-      
       {newproducts && newproducts.length > 0 ? (
-        
         newproducts.map((item, index) => {
           return (
-            <div className="" >
-            <Fragment key={index}>
-              <div className="w-full h-full space-x-5">
-
-		
-              <div className="col-span-1 w-full h-40 border m-2 rounded-lg border-green-200 text-black  shadow-lg bg-white">
-                <img
-                  onClick={(e) => Redirect(`/products/${item._id}`)}
-                  className="h-40 w-full object-cover object-center shadow-sm shadow-green-100 opacity-90 "
-                  src={item.pImageUrl}
-                  alt=""
-                />               
-              </div>
-              </div>
-            </Fragment>
+            <div className="">
+              <Fragment key={index}>
+                <div className="w-full h-full space-x-5">
+                  <div
+                    className="col-span-1  w-full h-40 border m-2 rounded-lg border-green-200 text-black  shadow-lg bg-white"
+                    onClick={(e) => history.push(`/products/${item._id}`)}
+                  >
+                    <img
+                      onClick={(e) => Redirect(`/products/${item._id}`)}
+                      className="h-40 w-full object-cover object-center shadow-sm shadow-green-100 opacity-90 "
+                      src={item.pImageUrl}
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </Fragment>
             </div>
           );
         })
