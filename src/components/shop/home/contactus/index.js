@@ -8,9 +8,9 @@ function index() {
   return (
     <div className="h-screen w-full">
       <Navber />
-      <div className="h-screen w-full">Contact us</div>
+      {/* <div className="h-screen w-full">Contact us</div> */}
       <ContactForm />
-      <Footer1 />
+      {/* <Footer1 /> */}
       <Footer />
     </div>
   );

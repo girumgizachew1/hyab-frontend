@@ -1,8 +1,9 @@
 import emailjs from "@emailjs/browser";
 
-export const sendEmail = (refForm) => {
-  // e.preventDefault();
-
+export const sendEmail = (e, refForm) => {
+  e.preventDefault();
+  console.log(refForm.current);
+  console.log(refForm);
   emailjs
     .sendForm(
       "service_ti8z5s9", // service key
