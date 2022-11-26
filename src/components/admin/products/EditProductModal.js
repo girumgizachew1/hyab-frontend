@@ -63,6 +63,7 @@ const EditProductModal = (props) => {
       pPrice: data.editProductModal.pPrice,
       pOffer: data.editProductModal.pOffer,
     });
+    setUrls(data.editProductModal.pImageUrl);
     console.log(data?.editProductModal?.pCategory);
   }, [data.editProductModal]);
 
@@ -84,6 +85,7 @@ const EditProductModal = (props) => {
     // if(!images) return;
     setShow(true);
     const promises = [];
+    setUrls([]);
     for (let i = 0; i < e.target.files.length; i++) {
       const image = e.target.files[i];
       const storageRef = projectStorage.ref(`ResizedImage/${image.name}`);
