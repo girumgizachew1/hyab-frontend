@@ -113,7 +113,6 @@ export const CheckoutComponent = (props) => {
   useEffect(() => {
     fetchData(cartListProduct, dispatch);
     fetchbrainTree(getBrainTreeToken, setState);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -188,23 +187,36 @@ export const CheckoutComponent = (props) => {
                       </div>
 
                       <div className="flex flex-col py-2 w-full">
-                        <label htmlFor="city" className="pb-2">
-                          City / Town
+                        <label htmlFor="country" className="pb-2">
+                          Country
                         </label>
-                        <input
-                          value={state.city}
+                        <select
+                          value={state.country}
+                          className="px-4 py-2 border focus:outline-none"
                           onChange={(e) =>
                             setState({
                               ...state,
-                              city: e.target.value,
+                              country: e.target.value,
                               error: false,
                             })
                           }
-                          type="text"
-                          id="city"
-                          className="border px-4 py-2"
-                          placeholder="City..."
-                        />
+                          // defaultValue="Ethiopia"
+                          name="country"
+                          id="country"
+                        >
+                          {country_list?.map((country) => {
+                            return (
+                              <option
+                                name="country"
+                                // className=" py-0"
+                                value={country}
+                                key={country}
+                              >
+                                {country}
+                              </option>
+                            );
+                          })}
+                        </select>
                       </div>
 
                       <div className="flex flex-col py-2 w-full">
@@ -222,9 +234,12 @@ export const CheckoutComponent = (props) => {
                             })
                           }
                         >
+                          <option value={null}>Select an occastion</option>
                           {occastion_list?.map((occastion) => {
                             return (
-                              <option value={occastion}>{occastion}</option>
+                              <option value={occastion} key={occastion}>
+                                {occastion}
+                              </option>
                             );
                           })}
                         </select>
@@ -273,35 +288,23 @@ export const CheckoutComponent = (props) => {
                       </div>
 
                       <div className="flex flex-col py-2 w-full">
-                        <label htmlFor="country" className="pb-2">
-                          Country
+                        <label htmlFor="city" className="pb-2">
+                          City / Town
                         </label>
-                        <select
-                          value={state.country}
-                          className="px-4 py-2 border focus:outline-none"
+                        <input
+                          value={state.city}
                           onChange={(e) =>
                             setState({
                               ...state,
-                              country: e.target.value,
+                              city: e.target.value,
                               error: false,
                             })
                           }
-                          // defaultValue="Ethiopia"
-                          name="country"
-                          id="country"
-                        >
-                          {country_list?.map((country) => {
-                            return (
-                              <option
-                                name="country"
-                                // className=" py-0"
-                                value={country}
-                              >
-                                {country}
-                              </option>
-                            );
-                          })}
-                        </select>
+                          type="text"
+                          id="city"
+                          className="border px-4 py-2"
+                          placeholder="City..."
+                        />
                       </div>
 
                       <div className="flex flex-col py-2 w-full ">
