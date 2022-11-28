@@ -135,6 +135,7 @@ export const editProduct = async (product, urls) => {
       pPrice: product.pPrice,
       pQuantity: product.pQuantity,
       pCategory: product.pCategory,
+      pWorldWide: product.pWorldWide,
       pImageUrl: urls,
       pOffer: product.pOffer,
       pStatus: product.pStatus,
