@@ -12,8 +12,8 @@ const VerifyEmail = () => {
   useEffect(() => {
     const verifyEmailUrl = async () => {
       try {
-        const url = `http://localhost:8000/api/${param.id}/verify/${param.token}`;
-        const url_F = `https://cute-cyan-tuna-slip.cyclic.app/api/${param.id}/verify/${param.token}`;
+        const url_F = `http://localhost:8000/api/${param.id}/verify/${param.token}`;
+        const url = `https://cute-cyan-tuna-slip.cyclic.app/api/${param.id}/verify/${param.token}`;
         const { data } = await axios.get(url);
         console.log(data);
         setValidUrl(true);

@@ -70,15 +70,15 @@ export default function Index(params) {
               >
                 <div
                   style={{ background: "#fff" }}
-                  className="w-full md:w-5/12 lg:w-4/12 h-full flex flex-col justify-between"
+                  className="w-full md:w-5/12 lg:w-4/12 h-full flex flex-col justify-between "
                 >
                   <div className="overflow-y-auto">
-                    <div className="sticky top-0 w-full border-b bg-green-600 border-gray-700 flex justify-between shadow-lg">
-                      <div className="p-4 text-white text-base bg-green-600 font-semibold">
+                    <div className="sticky top-0 w-full border-b  bg-red-500 bg-opacity-75 flex justify-between shadow-lg">
+                      <div className="p-4 text-white text-base  font-semibold">
                         Chat
                       </div>
                       {/* Cart Modal Close Button */}
-                      <div className="bg-green-600 p-4 text-white">
+                      <div className=" p-4 text-white">
                         <svg
                           onClick={(e) => chatModalClose()}
                           className="w-6 h-6 cursor-pointer"
@@ -105,10 +105,28 @@ export default function Index(params) {
             </Fragment>
           ) : (
             <div
-              className="fixed bottom-5 right-5 z-500"
+              className="fixed bottom-5 right-5 z-500 border-lg"
               onClick={chatModalOpen}
             >
-              <div className="p-5 rounded-full bg-blue-600">chat</div>
+              <div className="scale-2 ">
+                {/* chat */}
+                <span>
+                  <svg
+                    className="cursor-pointer w-12 h-12 text-gray-600 hover:text-gray-800"
+                    // stroke="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle cx="12" cy="12" r="1" fill="#d65c5c" opacity={75} />
+                    <path
+                      fill="#d65c5c"
+                      d="M12 2a10 10 0 0 0-7.743 16.33l-1.964 1.963A1 1 0 0 0 3 22h9a10 10 0 0 0 0-20ZM8 13a1 1 0 1 1 1-1 1 1 0 0 1-1 1Zm4 0a1 1 0 1 1 1-1 1 1 0 0 1-1 1Zm4 0a1 1 0 1 1 1-1 1 1 0 0 1-1 1Z"
+                    />
+                    <circle cx="8" cy="12" r="1" fill="#d65c5c" opacity={75} />
+                    <circle cx="16" cy="12" r="1" fill="#d65c5c" opacity={75} />
+                  </svg>
+                </span>
+              </div>
             </div>
           )}
         </div>

@@ -110,11 +110,13 @@ export const pay = async (
                 }
               } catch (error) {
                 console.log(error);
+                dispatch({ type: "loading", payload: false });
               }
             }
           })
           .catch((err) => {
             console.log(err);
+            dispatch({ type: "loading", payload: false });
           });
       })
       .catch((error) => {

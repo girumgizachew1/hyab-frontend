@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "./style.css";
 
+const apiURL = process.env.REACT_APP_API_URL;
+
 export default function Chats({ socket, username, room }) {
   const [currentMessage, setCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
@@ -59,12 +61,9 @@ export default function Chats({ socket, username, room }) {
 
   const fetchChat = async () => {
     if (room !== "") {
-      const chat = await axios.post(
-        "http://localhost:8000/api/chat/single-room",
-        {
-          room: room,
-        }
-      );
+      const chat = await axios.post(apiURL + "/api/chat/single-room", {
+        room: room,
+      });
       setChats(chat.data);
       console.log(chat.data);
     }
