@@ -59,7 +59,7 @@ const ListOfChats = ({ room }) => {
   }, [room]);
 
   const fetchChatList = async () => {
-    const chat = await axios.post("http://localhost:8000/api/chat/list-room");
+    const chat = await axios.post(apiURL + "/api/chat/list-room");
     setChatList(chat.data);
     console.log(chat.data);
   };

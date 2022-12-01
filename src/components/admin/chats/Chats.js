@@ -59,12 +59,9 @@ export default function Chats({ socket, username, room }) {
 
   const fetchChat = async () => {
     if (room !== "") {
-      const chat = await axios.post(
-        "http://localhost:8000/api/chat/single-room",
-        {
-          room: room,
-        }
-      );
+      const chat = await axios.post(apiURL + "/api/chat/single-room", {
+        room: room,
+      });
       setChats(chat.data);
       console.log(chat.data);
     }

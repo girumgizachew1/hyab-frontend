@@ -7,6 +7,7 @@ import { LayoutContext } from "../layout";
 
 import { isAuthenticate } from "../auth/fetchApi";
 import { productByCategory } from "../../admin/products/FetchApi";
+import { getRelatedProduct } from "./FetchApi";
 import { isWishReq, unWishReq, isWish } from "../home/Mixins";
 
 import { useHistory } from "react-router-dom";
@@ -59,7 +60,7 @@ const ProductDetailsSectionThree = (props) => {
   const fetchData = async () => {
     const catId = layoutData?.singleProductDetail?.pCategory?._id;
     try {
-      let responseData = await productByCategory(catId);
+      let responseData = await getRelatedProduct(catId);
       if (responseData && responseData.Products) {
         setProducts(responseData.Products);
       }

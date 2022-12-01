@@ -20,8 +20,8 @@ const PasswordReset = () => {
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
   const param = useParams();
-  const url_F = `https://cute-cyan-tuna-slip.cyclic.app/api/password/${param.id}/${param.token}`;
-  const url = `http://localhost:8000/api/password/${param.id}/${param.token}`;
+  const url = `https://cute-cyan-tuna-slip.cyclic.app/api/password/${param.id}/${param.token}`;
+  const url_F = `http://localhost:8000/api/password/${param.id}/${param.token}`;
 
   const [data, setData] = useState({
     password: "",

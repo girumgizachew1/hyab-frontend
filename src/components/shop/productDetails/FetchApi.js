@@ -14,6 +14,19 @@ export const getSingleProduct = async (pId) => {
   }
 };
 
+export const getRelatedProduct = async (catId) => {
+  try {
+    // console.log(`${apiURL}/api/product/product-by-relation`);
+    let res = await axios.post(`${apiURL}/api/product/product-by-relation`, {
+      catId: catId,
+    });
+    // console.log(res);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const postAddReview = async (formData) => {
   try {
     let res = await axios.post(`${apiURL}/api/product/add-review`, formData);
