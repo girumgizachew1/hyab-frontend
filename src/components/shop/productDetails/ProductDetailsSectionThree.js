@@ -7,6 +7,7 @@ import { LayoutContext } from "../layout";
 
 import { isAuthenticate } from "../auth/fetchApi";
 import { productByCategory } from "../../admin/products/FetchApi";
+import { getRelatedProduct } from "./FetchApi";
 import { isWishReq, unWishReq, isWish } from "../home/Mixins";
 
 import { useHistory } from "react-router-dom";
@@ -16,12 +17,10 @@ import "./style.css";
 const PageComponent = () => {
   // const [products, setProducts] = useState(null);
   // const { catId } = useParams();
-
   // useEffect(() => {
   //   fetchData();
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, []);
-
   // const fetchData = async () => {
   //   try {
   //     let responseData = await productByCategory(catId);
@@ -32,7 +31,6 @@ const PageComponent = () => {
   //     console.log(error);
   //   }
   // };
-
   // return (
   //   <Fragment>
   //     <AllProduct products={products} />
@@ -62,7 +60,7 @@ const ProductDetailsSectionThree = (props) => {
   const fetchData = async () => {
     const catId = layoutData?.singleProductDetail?.pCategory?._id;
     try {
-      let responseData = await productByCategory(catId);
+      let responseData = await getRelatedProduct(catId);
       if (responseData && responseData.Products) {
         setProducts(responseData.Products);
       }
@@ -78,34 +76,34 @@ const ProductDetailsSectionThree = (props) => {
 
   return (
     <Fragment>
-      <div className="m-4 md:mx-8 md:my-6 flex justify-center capitalize font-light tracking-widest bg-white border-t border-b text-gray-800 px-4 py-4 space-x-4">
-        <div>
-          <span>Related Products</span>
-        </div>
-      </div>
+
       <div className="flex flex-col md:flex-row space-x-6 mx-20">
-      {products && products.length > 0 ? (
-        products.map((item, index) => {
-          if(item._id != props.id){
-            return (
-              <Fragment key={index}>
-                <div className="relative col-span-1 m-2 w-64 h-42 p-2 border rounded-lg border-gray-200 bg-gray-100 text-blue-700  shadow-lg">
+        {products && products.length > 0 ? (
+          products.map((item, index) => {
+            if (item._id != props.id) {
+              return (
+                <Fragment key={index}>
+                <div className="relative col-span-1 m-2">
                   <img
-                    onClick={(e) => {
-                      handleClick(item._id)}}
-                    className="w-full object-cover object-center cursor-pointer"
+                    onClick={(e) => history.push(`/products/${item._id}`)}
+                    className="w-full h-80 object-fit  object-center cursor-pointer"
                     src={item.pImageUrl}
                     alt=""
                   />
-
+                  {/* <img
+                    onClick={(e) => history.push(`/products/${item._id}`)}
+                    className="w-full object-cover object-center cursor-pointer"
+                    src={`${apiURL}/uploads/products/${item.pImages[0]}`}
+                    alt=""
+                  /> */}
                   <div className="flex items-center justify-between mt-2">
-                    <div className="text-gray-800 font-bold text-lg truncate">
+                    <div className="text-gray-600 font-light truncate">
                       {item.pName}
                     </div>
                     <div className="flex items-center space-x-1">
                       <span>
                         <svg
-                          className="w-4 h-4 fill-current text-yellow-600"
+                          className="w-4 h-4 fill-current text-yellow-700"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -119,26 +117,15 @@ const ProductDetailsSectionThree = (props) => {
                           />
                         </svg>
                       </span>
-                      <span className="text-gray-800">
-                        {item.pRatingsReviews.length}
+                      <span className="text-gray-700">
+                        {item.pRatings ? item.pRatings.length : 0}
                       </span>
                     </div>
                   </div>
-
-                  <div className="flex flex-row justify-between">
-                    <div>${item.pPrice}.00</div>
-                    <button 
-                    onClick={(e) => history.push(`/products/${item._id}`)}
-                    className='bg-blue-600 text-white text-sm rounded-lg w-24 h-8' >View</button>
-                  </div>
-                  
-                  {/* WhisList Logic  */}
+                  <div>{item.pPrice}.00$</div>
                   <div className="absolute top-0 right-0 mx-2 my-2 md:mx-4">
                     <svg
-                      onClick={(e) => isWishReq(e, item._id, setWlist)}
-                      className={`${
-                        isWish(item._id, wList) && "hidden"
-                      } w-5 h-5 md:w-6 md:h-6 cursor-pointer text-yellow-600 transition-all duration-300 ease-in`}
+                      className="w-5 h-5 md:w-6 md:h-6 cursor-pointer text-yellow-700"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -151,33 +138,17 @@ const ProductDetailsSectionThree = (props) => {
                         d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
                       />
                     </svg>
-                    <svg
-                      onClick={(e) => unWishReq(e, item._id, setWlist)}
-                      className={`${
-                        !isWish(item._id, wList) && "hidden"
-                      } w-5 h-5 md:w-6 md:h-6 cursor-pointer text-yellow-700 transition-all duration-300 ease-in`}
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
                   </div>
-                  {/* WhisList Logic End */}
                 </div>
               </Fragment>
-            );
-          }
-        })
-      ) : (
-        <div className="col-span-2 md:col-span-3 lg:col-span-4 flex items-center justify-center py-24 text-2xl">
-          No product found
-        </div>
-      )}
+              );
+            }
+          })
+        ) : (
+          <div className="">
+            
+          </div>
+        )}
       </div>
     </Fragment>
   );

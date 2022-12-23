@@ -34,6 +34,7 @@ const EditProductModal = (props) => {
     pQuantity: "",
     pPrice: "",
     pOffer: "",
+    pWorldWide: false,
     error: false,
     success: false,
   });
@@ -61,9 +62,11 @@ const EditProductModal = (props) => {
       pCategory: data?.editProductModal?.pCategory,
       pQuantity: data.editProductModal.pQuantity,
       pPrice: data.editProductModal.pPrice,
+      pWorldWide: data.editProductModal.pWorldWide,
       pOffer: data.editProductModal.pOffer,
     });
-    console.log(data?.editProductModal?.pCategory);
+    setUrls(data.editProductModal.pImageUrl);
+    console.log(data?.editProductModal?.pWorldWide);
   }, [data.editProductModal]);
 
   const fetchData = async () => {
@@ -84,6 +87,7 @@ const EditProductModal = (props) => {
     // if(!images) return;
     setShow(true);
     const promises = [];
+    setUrls([]);
     for (let i = 0; i < e.target.files.length; i++) {
       const image = e.target.files[i];
       const storageRef = projectStorage.ref(`ResizedImage/${image.name}`);
@@ -142,7 +146,7 @@ const EditProductModal = (props) => {
                     storageRef.getDownloadURL().then((urls) => {
                       setShow(false);
                       collectionRef.add({ urls, createdAt });
-                      setEditformdata({ ...editProduct, pImageUrl: urls });
+                      // setEditformdata({ ...editProduct, pImageUrl: urls });
                       setUrls((prevState) => [...prevState, urls]);
                     });
                     const createdAt = timestamp();
@@ -448,21 +452,29 @@ const EditProductModal = (props) => {
                 />
               </div>
               <div className="w-1/2 flex flex-col space-y-1">
-                <label htmlFor="offer">Product Offfer (%) *</label>
-                <input
-                  value={editformData.pOffer}
-                  onChange={(e) =>
+                <label htmlFor="status">Shipment availability *</label>
+                <select
+                  value={editformData.pWorldWide}
+                  onChange={(e) => {
+                    console.log(e.target.value);
                     setEditformdata({
                       ...editformData,
                       error: false,
                       success: false,
-                      pOffer: e.target.value,
-                    })
-                  }
-                  type="number"
+                      pWorldWide: e.target.value,
+                    });
+                  }}
+                  name="shipment"
                   className="px-4 py-2 border focus:outline-none"
-                  id="offer"
-                />
+                  id="status"
+                >
+                  <option name="shipment" value={true}>
+                    All countries
+                  </option>
+                  <option name="shipment" value={false}>
+                    Only in ethiopia
+                  </option>
+                </select>
               </div>
             </div>
             <div className="flex flex-col space-y-1 w-full pb-4 md:pb-6 mt-4">

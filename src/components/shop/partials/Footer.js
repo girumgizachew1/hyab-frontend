@@ -10,8 +10,11 @@ const Footer = (props) => {
   return (
     <Fragment>
       <div className="bg-red-500" >
-      <footer class="text-center lg:text-left bg-gray-50 text-gray-800">
-  <div class="flex justify-center items-center lg:justify-between p-6  border-t">
+      <footer class="text-center lg:text-left bg-gray-900 text-gray-100">
+      <div className="bg-gray-900">
+           <img className="w-full"  src="/assets/footer-pttrn.svg" alt="african pattern" />
+           </div>
+  <div class="flex justify-center items-center lg:justify-between p-6 ">
     <div class="mr-12 hidden lg:block">
       <span>Get connected with us on social networks:</span>
     </div>
@@ -59,11 +62,11 @@ const Footer = (props) => {
           Hyab gift and marketplace is a online webstore where you can order gift for your loved ones and buy product for your self.
         </p>
       </div>
-      <div class="text-gray-700">
+      <div class="text-gray-100">
         <h6 class="uppercase underline font-semibold md:mb-4 flex justify-center md:justify-start">
           Products
         </h6>
-        <ul class="text-gray-700 text-left" aria-labelledby="dropdownDefault">
+        <ul class="text-gray-100 text-left" aria-labelledby="dropdownDefault">
             <li class="">
               <a href="#" class="block py-1 px-4 hover:text-red-400 ">New Year</a>
             </li>
@@ -78,12 +81,12 @@ const Footer = (props) => {
             </li>
         </ul>
       </div>
-      <div class=" text-gray-700">
-        <h6 class="py-1 uppercase underline font-semibold md:mb-4 flex justify-center md:justify-start text-gray-700">
+      <div class=" text-gray-100">
+        <h6 class="py-1 uppercase underline font-semibold md:mb-4 flex justify-center md:justify-start text-gray-100">
         Information
         </h6>
         
-        <ul class=" text-gray-700 text-left" aria-labelledby="dropdownDefault">
+        <ul class=" text-gray-100 text-left" aria-labelledby="dropdownDefault">
             <li class="">
               <a href="#" class="block py-1 px-4 hover:text-red-400 ">Policy Information</a>
             </li>
@@ -147,7 +150,7 @@ const Footer = (props) => {
       
     </div>
   </div>
-  <div class="text-center p-6 bg-red-500">
+  <div class="text-center p-6 bg-yellow-600">
     <span>© 2022 Copyright:</span>
     <a class="text-white font-semibold">Powerd by RaeyeTech</a>
   </div>

@@ -1,7 +1,8 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
-import { getAllProduct,getActiveProduct, deleteProduct } from "./FetchApi";
+import { getAllProduct, getActiveProduct, deleteProduct } from "./FetchApi";
 import moment from "moment";
 import { ProductContext } from "./index";
+import { fetchData } from "./Actions";
 
 const apiURL = process.env.REACT_APP_API_URL;
 
@@ -12,34 +13,49 @@ const AllProduct = (props) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetchData();
+    fetchData(dispatch);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const fetchData = async () => {
-    setLoading(true);
-    let responseData = await getAllProduct();
-    setTimeout(() => {
-      if (responseData && responseData.Products) {
-        dispatch({
-          type: "fetchProductsAndChangeState",
-          payload: responseData.Products,
-        });
-        setLoading(false);
-      }
-    }, 1000);
-  };
+  // const fetchData = async () => {
+  //   setLoading(true);
+  //   let responseData = await getAllProduct();
+  //   setTimeout(() => {
+  //     if (responseData && responseData.Products) {
+  //       dispatch({
+  //         type: "fetchProductsAndChangeState",
+  //         payload: responseData.Products,
+  //       });
+  //       setLoading(false);
+  //     }
+  //   }, 1000);
+  // };
+
+  // function myFunction() {
+  //   let text;
+  //   if (confirm("Sure you want to delete this product") == true) {
+  //     text = "You pressed OK!";
+  //   } else {
+  //     text = "You canceled!";
+  //   }
+  //   document.getElementById("demo").innerHTML = text;
+  // }
 
   const deleteProductReq = async (pId) => {
-    let deleteC = await deleteProduct(pId);
-    if (deleteC.error) {
-      console.log(deleteC.error);
-    } else if (deleteC.success) {
-      console.log(deleteC.success);
-      fetchData();
+    if (1) {
+      console.log("delte");
+    } else {
+      if (window.confirm("Sure you want to delete this product") == true) {
+        let deleteC = await deleteProduct(pId);
+        if (deleteC.error) {
+          console.log(deleteC.error);
+        } else if (deleteC.success) {
+          console.log(deleteC.success);
+          fetchData();
+        }
+      }
     }
   };
-
   /* This method call the editmodal & dispatch product context */
   const editProduct = (pId, product, type) => {
     if (type) {
@@ -81,9 +97,9 @@ const AllProduct = (props) => {
               <th className="px-4 py-2 border">Description</th>
               <th className="px-4 py-2 border">Image</th>
               <th className="px-4 py-2 border">Status</th>
-              <th className="px-4 py-2 border">Stock</th>
+              <th className="px-4 py-2 border">Price</th>
               <th className="px-4 py-2 border">Category</th>
-              <th className="px-4 py-2 border">Offer</th>
+              <th className="px-4 py-2 border">Stock</th>
               <th className="px-4 py-2 border">Created at</th>
               <th className="px-4 py-2 border">Updated at</th>
               <th className="px-4 py-2 border">Actions</th>
@@ -154,9 +170,9 @@ const ProductTable = ({ product, deleteProduct, editProduct }) => {
             </span>
           )}
         </td>
-        <td className="p-2 text-center">{product.pQuantity}</td>
+        <td className="p-2 text-center">$ {product?.pPrice}</td>
         <td className="p-2 text-center">{product?.pCategory?.cName}</td>
-        <td className="p-2 text-center">{product.pOffer}</td>
+        <td className="p-2 text-center">{product.pQuantity}</td>
         <td className="p-2 text-center">
           {moment(product.createdAt).format("lll")}
         </td>

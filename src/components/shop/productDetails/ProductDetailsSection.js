@@ -76,21 +76,9 @@ const ProductDetailsSection = (props) => {
 
   if (data.loading) {
     return (
-      <div className="col-span-2 md:col-span-3 lg:col-span-4 flex items-center justify-center h-screen">
-        <svg
-          className="w-12 h-12 animate-spin text-gray-600"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-          ></path>
-        </svg>
+      <div className=" col-span-2 md:col-span-3 lg:col-span-4 flex items-center justify-center py-24">
+          <div className="w-16 h-16 border border-yellow-600 border-solid rounded-full border-t-4  animate-spin">
+          </div>
       </div>
     );
   } else if (!sProduct) {
@@ -129,7 +117,7 @@ const ProductDetailsSection = (props) => {
             })}
           </div>
           <div className="col-span-2 md:col-span-5">
-            <div className="relative scale-70">
+            <div className="relative scale-60 h-1/2">
               <img
                 className="w-full object-cover"
                 src={sProduct.pImageUrl[count]}
@@ -220,12 +208,19 @@ const ProductDetailsSection = (props) => {
             <div className="my-4 md:my-6 text-gray-600">
               {sProduct.pDescription}
             </div>
-
-            <div className="m-4 md:mx-8 md:my-6 flex justify-center capitalize font-light tracking-widest bg-white border-t border-b text-gray-800 px-4 py-4 space-x-4">
-              <div>
-                <span>Only available in Ethiopia</span>
+            {sProduct?.pWorldWide ? (
+              <div className="m-4 md:mx-8 md:my-6 flex justify-center capitalize font-light tracking-widest bg-white border-t border-b text-gray-800 px-4 py-4 space-x-4">
+                <div>
+                  <span>Available in All Country</span>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="m-4 md:mx-8 md:my-6 flex justify-center capitalize font-light tracking-widest bg-white border-t border-b text-gray-800 px-4 py-4 space-x-4">
+                <div>
+                  <span>Only available in Ethiopia</span>
+                </div>
+              </div>
+            )}
 
             <div className="my-4 md:my-6">
               {+quantitiy === +sProduct.pQuantity ? (

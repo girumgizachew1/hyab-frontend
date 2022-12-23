@@ -66,6 +66,7 @@ export const createProduct = async (
     pImageUrl,
     pPrice,
     pOffer,
+    pWorldWide,
   },
   urls
 ) => {
@@ -96,6 +97,7 @@ export const createProduct = async (
       pImageUrl: urls,
       pOffer,
       pStatus,
+      pWorldWide,
     });
     return res.data;
   } catch (error) {
@@ -133,7 +135,8 @@ export const editProduct = async (product, urls) => {
       pPrice: product.pPrice,
       pQuantity: product.pQuantity,
       pCategory: product.pCategory,
-      pImageUrl: product.pImageUrl,
+      pWorldWide: product.pWorldWide,
+      pImageUrl: urls,
       pOffer: product.pOffer,
       pStatus: product.pStatus,
     });

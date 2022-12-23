@@ -18,11 +18,13 @@ export const productState = {
 export const productReducer = (state, action) => {
   switch (action.type) {
     /* Get all product */
-    case "fetchProductsAndChangeState":
+    case "fetchProductsAndChangeState": {
+      console.log("in change stage");
       return {
         ...state,
         products: action.payload,
       };
+    }
     /* Create a product */
     case "addProductModal":
       return {
@@ -41,6 +43,7 @@ export const productReducer = (state, action) => {
           pImages: action.product.pImages,
           pImageUrl: action.product.pImageUrl,
           pStatus: action.product.pStatus,
+          pWorldWide: action.product.pWorldWide,
           pCategory: action.product.pCategory,
           pQuantity: action.product.pQuantity,
           pPrice: action.product.pPrice,

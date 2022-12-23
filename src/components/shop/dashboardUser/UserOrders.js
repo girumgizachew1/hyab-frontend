@@ -35,11 +35,11 @@ const TableBody = ({ order }) => {
               <span className="block flex items-center space-x-2" key={i}>
                 <img
                   className="w-8 h-8 object-cover object-center"
-                  src={product.id.pImageUrl}
+                  src={product?.id?.pImageUrl}
                   alt="productImage"
                 />
-                <span>{product.id.pName}</span>
-                <span>{product.quantitiy}x</span>
+                <span>{product?.id?.pName}</span>
+                <span>{product?.quantitiy}x</span>
               </span>
             );
           })}
@@ -75,7 +75,15 @@ const TableBody = ({ order }) => {
           ${order.amount}.00
         </td>
         <td className="hover:bg-gray-200 p-2 text-center">{order.phone}</td>
-        <td className="hover:bg-gray-200 p-2 text-center">{order.address}</td>
+
+        <td className="w-48 hover:bg-gray-200 p-2 flex flex-col space-y-1">
+          <span>
+            {order?.country}, {order?.city}
+          </span>
+          <span>{order.address}</span>
+          <span>Post code: {order.postCode}</span>
+        </td>
+
         <td className="hover:bg-gray-200 p-2 text-center">
           {order.transactionId}
         </td>
