@@ -118,23 +118,11 @@ export const CheckoutComponent = (props) => {
 
   if (data.loading) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <svg
-          className="w-12 h-12 animate-spin text-gray-600"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-          ></path>
-        </svg>
-        Please wait untill finish
-      </div>
+      <div className=" col-span-2 md:col-span-3 lg:col-span-4 flex items-center justify-center py-24">
+      <div className="w-16 h-16 border border-yellow-600 border-solid rounded-full border-t-4  animate-spin">
+ 
+</div>
+  </div>
     );
   }
 
@@ -144,12 +132,28 @@ export const CheckoutComponent = (props) => {
         {/* Product List */}
         <div className="flex flex-col md:flex md:space-x-2 md:flex-col md:w-5/6 md:m-auto">
           <div className="md:w-full m-auto">
-            <div className="text-2xl mx-2">Order</div>
+            
+          <div>
+          <div className="py-4 text-center">
+              <h3 className="text-2xl font-bold text-gray-800">Step 1: confirm your order</h3>
+              <p className="text-gray-600 pt-4">"Please review the items in your cart and make sure everything is correct before proceeding to checkout. Once you confirm your order, you will not be able to make any changes. 
+              Click the "Confirm Order" button to complete your purchase."</p>
+          </div>
+          </div>
+
+
+
+
             <CheckoutProducts products={data.cartProduct} />
           </div>
 
           <div className="w-full order-first md:order-last">
-            <div className="text-2xl mx-0">Shiping Address</div>
+            <div>
+          <div className="py-4 text-center">
+              <h3 className="text-2xl font-bold text-gray-800">Step 2: Enter Your Shipping Address</h3>
+              <p className="text-gray-600 pt-4">"Before we can process your order, we need to know where to send it. Please enter the address where you would like your order to be shipped. Be sure to double check that you have entered all of the necessary information, such as your name, street address, apartment or suite number (if applicable), city, state, and zip code. It's important to make sure that all of this information is correct, as we want to ensure that your order is delivered to the correct location. When you're ready, click the "Continue to Payment" button to proceed to the next step."</p>
+          </div>
+          </div>
             {state.clientToken !== null ? (
               <Fragment>
                 <div
@@ -351,27 +355,21 @@ export const CheckoutComponent = (props) => {
                 </div>
               </Fragment>
             ) : (
-              <div className="flex items-center justify-center py-12">
-                <svg
-                  className="w-12 h-12 animate-spin text-gray-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                  ></path>
-                </svg>
+              <div className=" col-span-2 md:col-span-3 lg:col-span-4 flex items-center justify-center py-24">
+                  <div className="w-16 h-16 border border-yellow-600 border-solid rounded-full border-t-4  animate-spin">
+     
+                  </div>
               </div>
             )}
           </div>
 
           <div className="md:w-full m-auto pb-10 md:order-last">
-            <div className="text-2xl mx-0">Payment</div>
+            <div>
+          <div className="py-4 text-center">
+              <h3 className="text-2xl font-bold text-gray-800">Step 3: Make A payment</h3>
+              <p className="text-gray-600 pt-4">"It's time to complete your purchase! Please choose how you would like to pay for your order. We accept payments through PayPal and Mastercard. If you choose to pay with PayPal, you will be redirected to the PayPal website to complete the payment. If you choose to pay with a Mastercard, please enter your card information in the form provided. Please double check that all of the information you enter is correct, as we want to make sure that your payment is processed smoothly. When you're ready, click the "Pay Now" button to finish your order. Thank you for shopping with us!."</p>
+          </div>
+          </div>
             <DropIn
               options={{
                 authorization: state.clientToken,

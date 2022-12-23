@@ -16,23 +16,17 @@ export default function ContactForm(params) {
           <input type="submit" value="Send" />
         </form>
       </div> */}
-      <div class="container my-24 px-6 mx-auto">
+      <div class=" container my-24 px-6 mx-auto">
         {/* <!-- Section: Design Block --> */}
         <section class="mb-32 text-gray-800">
           <div class="flex flex-wrap">
             <div class="grow-0 shrink-0 basis-auto mb-6 md:mb-0 w-full md:w-6/12 px-3 lg:px-6">
-              <h2 class="text-3xl font-bold mb-6">Contact us</h2>
-              <p class="text-gray-500 mb-6">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Laudantium, modi accusantium ipsum corporis quia asperiores
-                dolorem nisi corrupti eveniet dolores ad maiores repellendus
-                enim autem omnis fugiat perspiciatis? Ad, veritatis.
-              </p>
-              <p class="text-gray-500 mb-2">Addis abeba, 94126, Ethiopia</p>
-              <p class="text-gray-500 mb-2">+ 251 9-- --- ---</p>
-              <p class="text-gray-500 mb-2">hyabmarket@gmail.com</p>
+              <img src="assets/contact.png" alt="contacts"></img>
+              
             </div>
             <div class="grow-0 shrink-0 basis-auto mb-12 md:mb-0 w-full md:w-6/12 px-3 lg:px-6">
+            <h2 class="text-3xl font-bold mb-6">Contact us</h2>
+
               <form ref={refForm} onSubmit={(e) => sendEmail(e, refForm)}>
                 <div class="form-group mb-6">
                   <input
@@ -150,7 +144,7 @@ export default function ContactForm(params) {
                     w-full
                     px-6
                     py-2.5
-                    bg-blue-600
+                    bg-yellow-600
                     text-white
                     font-medium
                     text-xs
@@ -158,9 +152,9 @@ export default function ContactForm(params) {
                     uppercase
                     rounded
                     shadow-md
-                    hover:bg-blue-700 hover:shadow-lg
-                    focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-                    active:bg-blue-800 active:shadow-lg
+                    hover:bg-yellow-600 hover:shadow-lg
+                    focus:bg-yellow-600 focus:shadow-lg focus:outline-none focus:ring-0
+                    active:bg-yellow-700 active:shadow-lg
                     transition
                     duration-150
                     ease-in-out"
@@ -169,6 +163,34 @@ export default function ContactForm(params) {
                 </button>
               </form>
             </div>
+          </div>
+          <div>
+          <div className="container mx-auto px-10 mt-10">
+      <p className="text-gray-600 mb-8">
+      Thank you for visiting our website! We are always happy to hear from our customers, and we value your feedback and suggestions. If you have any questions or concerns, please don't hesitate to reach out to us. Whether you need help with an order, have a suggestion for how we can improve our products or services, or just want to say hello, we would love to hear from you.
+           </p>
+      
+      <div className="mt-8 text-gray-600">
+        Or, you can contact us through one of the following methods:
+        <div className="mt-4">
+          <span className="font-bold">Email:</span> info@hyabmarket.com
+        </div>
+        <div className="mt-4">
+        <span className="font-bold">Phone:</span> 555-555-1212
+      </div>
+      <div className="mt-4">
+        <span className="font-bold">Mail:</span> AddisAbaba Ethiopia /bole
+
+      </div>
+        </div>
+        <p className="text-gray-600 py-2 mb-4">
+        We will do our best to get back to you as soon as possible. We want to make sure that you have the best experience possible when shopping with us, and we are always here to help. Thank you for choosing us, and we hope to hear from you soon!
+
+
+           </p>
+      
+          </div>
+          
           </div>
         </section>
       </div>

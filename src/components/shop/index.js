@@ -19,8 +19,9 @@ import ProductDetails from "./productDetails";
 import ProductByCategory from "./home/ProductByCategory";
 import CheckoutPage from "./order/CheckoutPage";
 import Chat from "./chat";
-
+import Policyinfo from "./home/policy/policyinfo";
 export {
+  Policyinfo,
   Aboutus,
   Chat,
   Howtoorder,

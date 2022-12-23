@@ -69,15 +69,15 @@ const CartModal = () => {
       >
         <div
           style={{ background: "#fff" }}
-          className="w-full md:w-5/12 lg:w-4/12 h-full flex flex-col justify-between"
+          className="w-full md:w-4/12 lg:w-3/12 h-full flex flex-col justify-between"
         >
           <div className="overflow-y-auto">
-            <div className="border-b bg-green-600 border-gray-700 flex justify-between shadow-lg">
-              <div className="p-4 text-white text-base bg-green-600 font-semibold">
+            <div className=" bg-yellow-600 border-gray-700 flex justify-between shadow-lg">
+              <div className="p-4 text-white text-base bg-yellow-600 font-semibold">
                 Cart
               </div>
               {/* Cart Modal Close Button */}
-              <div className="bg-green-600 p-4 text-white">
+              <div className="bg-yellow-600 p-4 text-white">
                 <svg
                   onClick={(e) => cartModalOpen()}
                   className="w-6 h-6 cursor-pointer"
@@ -93,6 +93,7 @@ const CartModal = () => {
                 </svg>
               </div>
             </div>
+            <img className="h-6" src="/assets/footer-pttrn.svg" alt="bahel" ></img>
             <div className="m-4 flex-col">
               {products &&
                 products.length !== 0 &&
@@ -163,7 +164,7 @@ const CartModal = () => {
           <div className="m-4 space-y-4">
             <div
               onClick={(e) => cartModalOpen()}
-              className="cursor-pointer px-4 py-2 border border-green-400 text-black text-center cursor-pointer"
+              className="cursor-pointer px-4 py-2 border border-yellow-600 text-black text-center cursor-pointer"
             >
               Continue shopping
             </div>
@@ -171,7 +172,7 @@ const CartModal = () => {
               <Fragment>
                 {isAuthenticate() ? (
                   <div
-                    className="px-4 py-2 bg-green-700 text-white text-center cursor-pointer"
+                    className="px-4 py-2 bg-yellow-600 text-white text-center cursor-pointer"
                     onClick={(e) => {
                       history.push("/checkout");
                       cartModalOpen();
@@ -181,7 +182,7 @@ const CartModal = () => {
                   </div>
                 ) : (
                   <div
-                    className="px-4 py-2 bg-green-700 text-white text-center cursor-pointer"
+                    className="px-4 py-2 bg-yellow-600 text-white text-center cursor-pointer"
                     onClick={(e) => {
                       history.push("/");
                       cartModalOpen();
@@ -200,7 +201,7 @@ const CartModal = () => {
                 )}
               </Fragment>
             ) : (
-              <div className="px-4 py-2 bg-green-700 text-white text-center cursor-not-allowed">
+              <div className="px-4 py-2 bg-yellow-600 text-white text-center cursor-not-allowed">
                 Checkout
               </div>
             )}

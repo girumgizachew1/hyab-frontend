@@ -6,7 +6,7 @@ import ContactForm from "./ContactForm";
 import { Footer1 } from "../../partials";
 function index() {
   return (
-    <div className="h-screen w-full">
+    <div className="h-screen w-full ">
       <Navber />
       {/* <div className="h-screen w-full">Contact us</div> */}
       <ContactForm />

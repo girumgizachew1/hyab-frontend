@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { UserProfile, UserOrders, SettingUser } from "./shop/dashboardUser";
 import {
+  Policyinfo,
   Home,
   Aboutus,
   Howtoorder,
@@ -28,6 +29,7 @@ import {
   CheckoutPage,
   VerifyEmail,
   PasswordReset,
+
 } from "./shop";
 
 /* Routing All page will be here */
@@ -43,6 +45,11 @@ const Routes = (props) => {
 
         <Route exact path="/contactus" component={Contactus} />
         <Route exact path="/chat" component={Chat} />
+
+        <Route exact path="/wish-list" component={WishList} />
+
+        <Route exact path="/policyinfo" component={Policyinfo} />
+
 
         {/* <Route exact path="/wish-list" component={WishList} /> */}
 

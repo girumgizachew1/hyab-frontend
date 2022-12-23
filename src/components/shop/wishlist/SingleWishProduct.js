@@ -100,7 +100,9 @@ const Product = () => {
             );
           })
         ) : (
-          <div>No product found in wishList</div>
+          <div>
+            <img src="/assets/empty.png" className="ml-96 h-[70vh] items-center" alt="noting to show" ></img>
+          </div>
         )}
       </div>
     </Fragment>

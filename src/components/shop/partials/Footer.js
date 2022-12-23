@@ -88,16 +88,16 @@ const Footer = (props) => {
         
         <ul class=" text-gray-100 text-left" aria-labelledby="dropdownDefault">
             <li class="">
-              <a href="#" class="block py-1 px-4 hover:text-red-400 ">Policy Information</a>
+              <a href="/policyinfo" class="block py-1 px-4 hover:text-red-400 ">Policy Information</a>
             </li>
             <li>
-             <a href="#" class="block py-1 px-4 hover:text-red-400 ">Terms and Conditions</a>
+             <a href="/policyinfo" class="block py-1 px-4 hover:text-red-400 ">Terms and Conditions</a>
             </li>
             <li>
-              <a href="#" class="block py-1 px-4 hover:text-red-400 ">Return and Shipping Policy</a>
+              <a href="/policyinfo" class="block py-1 px-4 hover:text-red-400 ">Return and Shipping Policy</a>
             </li>
             <li>
-              <a href="#" class="block py-1 px-4 hover:text-red-400 ">Cancellation and Refund Policy</a>
+              <a href="/policyinfo" class="block py-1 px-4 hover:text-red-400 ">Cancellation and Refund Policy</a>
             </li>
         </ul>
         
